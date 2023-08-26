@@ -4,6 +4,46 @@ Recursos varios para prepararte para una entrevista técnica
 
 
 
+## Buenas practicas
+
+Principios SOLID
+
+[SOLID en Javascript Vanilla Inglés](https://github.com/ryanmcdermott/clean-code-javascript#openclosed-principle-ocp)
+
+[SOLID en Vue.JS Inglés](https://medium.com/@moein.mirkiani/solid-principles-in-vue-29ecc988f968)
+
+[SOLID en React.JS Inglés](https://medium.com/docler-engineering/applying-solid-to-react-ca6d1ff926a4)
+
+*********
+
+DRY
+
+[Demystifying Software Development Principles: DRY, KISS, YAGNI, SOLID, GRASP, and LoD](https://levelup.gitconnected.com/demystifying-software-development-principles-dry-kiss-yagni-solid-grasp-and-lod-8606113c0313)
+
+*********
+
+Clean code
+
+[Clean Code en Javascript Español](https://github.com/andersontr15/clean-code-javascript-es)
+
+[Clean Code en Javascript Inglés](https://github.com/ryanmcdermott/clean-code-javascript#openclosed-principle-ocp)
+
+[Clean Code en Python Español](https://github.com/sryvcr/clean-code-python-es)
+
+[Clean Code en Python Inglés](https://github.com/zedr/clean-code-python)
+
+[Clean Code en Java Español](https://github.com/alansastre/java-clean-code)
+
+[Clean Code en Java Inglés](https://github.com/JuanCrg90/Clean-Code-Notes)
+
+**********
+
+Clean architecture
+
+
+## Patrones de diseño
+
+[Patrones de diseño](https://www.patterns.dev/posts)
 ## Temas
 
 VUEJS 
@@ -30,7 +70,7 @@ Master passwords
 
 Designing principles
 
-Predefine Slink.  Code readable 
+Predefine Es-lint.  Code readable 
 
 Improve the code-  layer of abstraction, Automation test, unit testing, end to end testing 
 
@@ -42,7 +82,7 @@ Define release flow GIT –
 
 ****************
 
-- * Coding taks**
+- * Coding task**
 
 find ids count in object
 
@@ -62,13 +102,13 @@ Dif using points and hours
 
 Designing architecture
 
-Object oriented program
+Object oriented programming
 
 paradigm & others (functional programming i.e…..)
 
 Base paradigm principals (object oriented)
 
-WHAT ARE THE BEST PRACTICES THAT U APPLY IN YOUR PROJECT (single responsibility,
+WHAT ARE THE BEST PRACTICES THAT U APPLY IN YOUR PROJECT
 
  
 
