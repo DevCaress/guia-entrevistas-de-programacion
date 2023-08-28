@@ -3,10 +3,16 @@
 Recursos varios para prepararte para una entrevista técnica
 
 
+# Índice
 
+- [Buenas práticas](#buenas-practicas)
+    - [Principios SOLID](Asdasdasd)
+    - [Principios DRY, KISS, YAGNI, GRASP y LoD](Asdasdasd)
+    - [Cleand Code](Asdasdasd)
+- [Algoritmos y Estucturas de Datos](#algoritmos-y-estructuras-de-datos)
 ## Buenas practicas
 
-Principios SOLID
+### Principios SOLID
 
 [SOLID en Javascript Vanilla Inglés](https://github.com/ryanmcdermott/clean-code-javascript#openclosed-principle-ocp)
 
@@ -16,13 +22,13 @@ Principios SOLID
 
 *********
 
-DRY
+### DRY
 
 [Demystifying Software Development Principles: DRY, KISS, YAGNI, SOLID, GRASP, and LoD](https://levelup.gitconnected.com/demystifying-software-development-principles-dry-kiss-yagni-solid-grasp-and-lod-8606113c0313)
 
 *********
 
-Clean code
+### Clean code
 
 [Clean Code en Javascript Español](https://github.com/andersontr15/clean-code-javascript-es)
 
@@ -38,9 +44,10 @@ Clean code
 
 **********
 
-Clean architecture
+### Clean architecture
 
 
+## Algoritmos y estructuras de datos
 ## Patrones de diseño
 
 [Patrones de diseño](https://www.patterns.dev/posts)
