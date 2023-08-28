@@ -6,11 +6,11 @@ Recursos varios para prepararte para una entrevista técnica
 # Índice
 
 - [Buenas práticas](#buenas-practicas)
-    - [Principios SOLID](Asdasdasd)
-    - [Principios DRY, KISS, YAGNI, GRASP y LoD](Asdasdasd)
-    - [Cleand Code](Asdasdasd)
+    - [Principios SOLID](#principios-solid)
+    - [Principios DRY, KISS, YAGNI, GRASP y LoD](#dry)
+    - [Cleand Code](#clean-code)
 - [Algoritmos y Estucturas de Datos](#algoritmos-y-estructuras-de-datos)
-## Buenas practicas
+# Buenas practicas
 
 ### Principios SOLID
 
@@ -47,10 +47,69 @@ Recursos varios para prepararte para una entrevista técnica
 ### Clean architecture
 
 
-## Algoritmos y estructuras de datos
-## Patrones de diseño
+# Algoritmos y estructuras de datos
 
-[Patrones de diseño](https://www.patterns.dev/posts)
+## Visualizar algoritmos
+
+### [Visualgo](https://visualgo.net/)
+En esta web podrás ver como funcionan de manera visual los siguientes algoritmos:
+
+- Sorting
+    - Bubble Sort
+    - Selection Sort
+    - Insertion Sort
+    - Merge Sort
+    - Quick Sort
+    - Random Quick Sort
+    - Counting Sort
+    - Radix Sort
+
+- Linked List
+    - Stack
+    - Queue
+    - Doubly Linked List
+    - Deque
+
+- Hash Tables
+    - Linear Probing
+    - Quadratic Probing
+    - Double Hashing
+    - Separate Chaining
+- Binary Heap
+- Binary Search Tree
+    - AVL Tree
+
+# Patrones de diseño
+[Patrones de diseño Español (Recomendación personal)](https://refactoring.guru/es/design-patterns)
+
+[Patrones de diseño en Javascript](https://www.patterns.dev/posts)
+
+- Patrones Creacionales
+    - Singleton
+    - Factory Method 
+    - Abstract Factory 
+    - Builder 
+    - Prototype
+- Patrones Estructurales
+    - Adapter
+    - Bridge
+    - Composite
+    - Decorator
+    - Facade
+    - Flyweight
+    - Proxy
+- Patrones de comportamiento
+    - Chain of Responsibility
+    - Command
+    - Iterator
+    - Mediator
+    - Memento
+    - Observer
+    - State
+    - Strategy
+    - Template Method
+    - Interpreter
+    - Visitor
 ## Temas
 
 VUEJS 
