@@ -162,10 +162,14 @@ En esta web podrás ver como funcionan de manera visual los siguientes algoritmo
 
 # Practicar algoritmos y estructuras de datos
 [CodeWars](https://www.codewars.com/)
+
 [LeetCode](https://leetcode.com)
+
 [HackerRank](https://www.hackerrank.com/)
+
 [CoderByte](https://coderbyte.com/)
-[Exercism](https://exercism.org/)
+
+[xercism](https://exercism.org/)
 
 # Ejercicios más comunes en entrevistas
 
