@@ -10,6 +10,9 @@ Recursos varios para prepararte para una entrevista técnica
     - [Principios DRY, KISS, YAGNI, GRASP y LoD](#dry)
     - [Cleand Code](#clean-code)
 - [Algoritmos y Estucturas de Datos](#algoritmos-y-estructuras-de-datos)
+- [Patrones de diseño](#patrones-de-diseño)
+- [Ejercicios más comunes en entrevistas](#ejercicios-mas-comunes-en-entrevistas)
+- [Practicar algoritmos y estructuras de datos](#practicar-algoritmos-y-estructuras-de-datos)
 # Buenas practicas
 
 ### Principios SOLID
@@ -48,6 +51,52 @@ Recursos varios para prepararte para una entrevista técnica
 
 
 # Algoritmos y estructuras de datos
+
+## Estructuras de datos
+
+- Stack
+- Queue
+- Types of Queue
+- Circular Queue
+- Priority Queue
+- Deque
+
+- Linked List
+- Linked List Operations
+- Types of Linked List
+- Hash Table
+- Heap Data Structure
+- Fibonacci Heap
+- Decrease Key and Delete node from Fibonacci Heap
+
+- Tree Data Structure
+- Tree Traversal
+- Binary Tree
+- Full Binary Tree
+- Perfect Binary Tree
+- Complete Binary Tree
+- Balanced Binary Tree
+- Binary Search Tree
+- AVL Tree
+
+- B Tree
+- Insertion into B-tree
+- Deletion from B-tree
+- B+ Tree
+- Insertion on a B+ Tree
+- Deletion from a B+ Tree
+- Red Black Tree
+- Insertion in Red Black Tree
+- Deletion from Red Black Tree
+
+- Graph Data Structure
+- Spanning Tree
+- Strongly Connected Components
+- Adjacency Matrix
+- Adjacency List
+- DFS Algorithm
+- Breadth-first Search
+- Bellman Ford's Algorithm
 
 ## Visualizar algoritmos
 
@@ -110,6 +159,20 @@ En esta web podrás ver como funcionan de manera visual los siguientes algoritmo
     - Template Method
     - Interpreter
     - Visitor
+
+# Practicar algoritmos y estructuras de datos
+[CodeWars](https://www.codewars.com/)
+[LeetCode](https://leetcode.com)
+[HackerRank](https://www.hackerrank.com/)
+[CoderByte](https://coderbyte.com/)
+[Exercism](https://exercism.org/)
+
+# Ejercicios más comunes en entrevistas
+
+- Invertir un array/string
+- Eliminar duplicados de un array/string
+- 
+
 ## Temas
 
 VUEJS 
