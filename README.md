@@ -177,6 +177,12 @@ En esta web podrás ver como funcionan de manera visual los siguientes algoritmo
 - Eliminar duplicados de un array/string
 - 
 
+
+# Preguntas más comunes de Javascript
+
+- Qué es el Event Loop??
+    - [Visualizar Event Loop](http://latentflip.com/loupe/)
+    - [Ejemplos para entender Event Loop](https://www.jsv9000.app)
 ## Temas
 
 VUEJS 
