@@ -173,7 +173,7 @@ En esta web podrás ver como funcionan de manera visual los siguientes algoritmo
 
 [xercism](https://exercism.org/)
 
-#Preguntas más frecuentes
+# Preguntas más frecuentes
 - [Vue Interview questions](https://github.com/sudheerj/vuejs-interview-questions)
 - [React Interview questions](https://github.com/sudheerj/reactjs-interview-questions)
 - [Angualar Interview questions](https://github.com/sudheerj/angular-interview-questions)
