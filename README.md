@@ -13,6 +13,8 @@ Recursos varios para prepararte para una entrevista técnica
 - [Patrones de diseño](#patrones-de-diseño)
 - [Ejercicios más comunes en entrevistas](#ejercicios-mas-comunes-en-entrevistas)
 - [Practicar algoritmos y estructuras de datos](#practicar-algoritmos-y-estructuras-de-datos)
+- [Preguntas más frecuentes](#preguntas-mas-frecuentes)
+
 # Buenas practicas
 
 ### Principios SOLID
@@ -170,6 +172,14 @@ En esta web podrás ver como funcionan de manera visual los siguientes algoritmo
 [CoderByte](https://coderbyte.com/)
 
 [xercism](https://exercism.org/)
+
+#Preguntas más frecuentes
+- [Vue Interview questions](https://github.com/sudheerj/vuejs-interview-questions)
+- [React Interview questions](https://github.com/sudheerj/reactjs-interview-questions)
+- [Angualar Interview questions](https://github.com/sudheerj/angular-interview-questions)
+- [Javascript Interview questions](https://github.com/sudheerj/javascript-interview-questions)
+- [Java Interview questions](https://github.com/Devinterview-io/java-interview-questions)
+-[PHP Interview questions](https://github.com/Devinterview-io/php-interview-questions)
 
 # Ejercicios más comunes en entrevistas
 
