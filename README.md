@@ -13,7 +13,7 @@ Recursos varios para prepararte para una entrevista técnica
 - [Patrones de diseño](#patrones-de-diseño)
 - [Ejercicios más comunes en entrevistas](#ejercicios-mas-comunes-en-entrevistas)
 - [Practicar algoritmos y estructuras de datos](#practicar-algoritmos-y-estructuras-de-datos)
-- [Preguntas más frecuentes](#preguntas-mas-frecuentes)
+- [Preguntas más frecuentes](#preguntas-más-frecuentes)
 
 # Buenas practicas
 
