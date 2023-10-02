@@ -11,9 +11,10 @@ Recursos varios para prepararte para una entrevista técnica
     - [Cleand Code](#clean-code)
 - [Algoritmos y Estucturas de Datos](#algoritmos-y-estructuras-de-datos)
 - [Patrones de diseño](#patrones-de-diseño)
+- [Preguntas más frecuentes](#preguntas-más-frecuentes)
 - [Ejercicios más comunes en entrevistas](#ejercicios-mas-comunes-en-entrevistas)
 - [Practicar algoritmos y estructuras de datos](#practicar-algoritmos-y-estructuras-de-datos)
-- [Preguntas más frecuentes](#preguntas-más-frecuentes)
+
 
 # Buenas practicas
 
@@ -181,6 +182,10 @@ En esta web podrás ver como funcionan de manera visual los siguientes algoritmo
 - [Java Interview questions](https://github.com/Devinterview-io/java-interview-questions)
 - [Spring Interview questions](https://github.com/altafjava/spring-interview-questions-answers)
 - [PHP Interview questions](https://github.com/Devinterview-io/php-interview-questions)
+- [Python Interview questions](https://github.com/Devinterview-io/python-interview-questions)
+- [Django Interview questions](https://github.com/Ujjawal-Anand/django-interview)
+- [SQL Interview questions](https://github.com/kansiris/SQL-interview-questions/tree/master)
+- [Cracking the SQL interview](https://github.com/xoraus/CrackingTheSQLInterview)
 
 # Ejercicios más comunes en entrevistas
 
