@@ -9,6 +9,7 @@ Recursos varios para prepararte para una entrevista técnica
     - [Principios SOLID](#principios-solid)
     - [Principios DRY, KISS, YAGNI, GRASP y LoD](#dry)
     - [Cleand Code](#clean-code)
+    - [Buenas prácticas en:](#buenas-practicas-en:)
 - [Algoritmos y Estucturas de Datos](#algoritmos-y-estructuras-de-datos)
 - [Patrones de diseño](#patrones-de-diseño)
 - [Ejercicios más comunes en entrevistas](#ejercicios-mas-comunes-en-entrevistas)
@@ -51,6 +52,72 @@ Recursos varios para prepararte para una entrevista técnica
 
 ### Clean architecture
 
+# Buenas practicas en:
+
+## Javascript
+
+[Guidelines for writing JavaScript code examples](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Writing_style_guide/Code_style_guide/JavaScript)
+
+[JavaScript Best Practices by W3.org](https://www.w3.org/wiki/JavaScript_best_practices)
+
+[JavaScript Best Practices by W3Schools](https://www.w3schools.com/js/js_best_practices.asp)
+
+[Airbnb JavaScript Style Guide()](https://github.com/airbnb/javascript)
+
+[30 JavaScript Best Practices for Beginners](https://code.tutsplus.com/24-javascript-best-practices-for-beginners--net-5399t)
+
+## Vue.js
+[12 VueJS Best Practices](https://learnvue.co/articles/vue-best-practices)
+
+## React.js
+
+[10 Best Practices for Writing Clean React Code](https://www.turing.com/kb/writing-clean-react-code)
+
+[React Best Practices – Tips for Writing Better React Code in 2022](https://www.freecodecamp.org/news/best-practices-for-react/#tips-to-help-you-write-better-react-code-the-cherries-on-top)
+
+[React best practices and patterns to reduce code](https://devsmitra.medium.com/react-best-practices-and-patterns-to-reduce-code-3170f1913b26)
+
+[React Best Practices Every Developer Have to Follow in 2023](https://technostacks.com/blog/react-best-practices/)
+
+## Angular
+
+[10 Best Practices for Building Scalable Angular Applications — With examples](https://medium.com/@mattias.trnqvist/10-best-practices-for-building-scalable-angular-applications-with-examples-efdfe2a5b4e8)
+
+[https://www.tatvasoft.com/blog/angular-optimization-and-best-practices/](https://www.tatvasoft.com/blog/angular-optimization-and-best-practices/)
+
+[Angular coding style guide](https://angular.io/guide/styleguide)
+
+## Typescript
+
+[TypeScript best practices by AWS](https://docs.aws.amazon.com/prescriptive-guidance/latest/best-practices-cdk-typescript-iac/typescript-best-practices.html)
+
+[TypeScript Best Practices 2021](https://medium.com/@warkiringoda/typescript-best-practices-2021-a58aee199661)
+
+## Python
+
+[Code Style in Python](https://docs.python-guide.org/writing/style/)
+
+[Python Best Practices to Follow in 2023](https://aglowiditsolutions.com/blog/python-best-practices/)
+
+## Java
+
+[Java Best Practices (recomendado)](https://github.com/in28minutes/java-best-practices)
+
+[Java Best Practices](https://www.developer.com/languages/javascript/java-best-practices/)
+
+[10 best practices in Java](https://medium.com/@alexthedev/10-best-practices-in-java-dc0b06dda858)
+
+## C++
+
+[Collecting the best C++ practices](https://medium.com/@Code_Analysis/collecting-the-best-c-practices-4b867006849f)
+
+[Boost Your C++ Coding Skills: 5 Tips For Faster, Better Code](https://programminggyan.com/5-cpp-tips-for-faster-better-code/)
+
+## PHP
+
+[PHP Programming Best Practices and Coding Styles](https://medium.com/techlaboratory/php-programming-best-practices-and-coding-styles-e43234446fd3)
+
+[PHP Best Practices](https://phpbestpractices.org/)
 
 # Algoritmos y estructuras de datos
 
