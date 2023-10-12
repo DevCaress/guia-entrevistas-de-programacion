@@ -12,9 +12,10 @@ Recursos varios para prepararte para una entrevista técnica
     - [Buenas prácticas en:](#buenas-practicas-en:)
 - [Algoritmos y Estucturas de Datos](#algoritmos-y-estructuras-de-datos)
 - [Patrones de diseño](#patrones-de-diseño)
+- [Preguntas más frecuentes](#preguntas-más-frecuentes)
 - [Ejercicios más comunes en entrevistas](#ejercicios-mas-comunes-en-entrevistas)
 - [Practicar algoritmos y estructuras de datos](#practicar-algoritmos-y-estructuras-de-datos)
-- [Preguntas más frecuentes](#preguntas-mas-frecuentes)
+
 
 # Buenas practicas
 
@@ -240,13 +241,18 @@ En esta web podrás ver como funcionan de manera visual los siguientes algoritmo
 
 [xercism](https://exercism.org/)
 
-#Preguntas más frecuentes
+# Preguntas más frecuentes
 - [Vue Interview questions](https://github.com/sudheerj/vuejs-interview-questions)
 - [React Interview questions](https://github.com/sudheerj/reactjs-interview-questions)
 - [Angualar Interview questions](https://github.com/sudheerj/angular-interview-questions)
 - [Javascript Interview questions](https://github.com/sudheerj/javascript-interview-questions)
 - [Java Interview questions](https://github.com/Devinterview-io/java-interview-questions)
--[PHP Interview questions](https://github.com/Devinterview-io/php-interview-questions)
+- [Spring Interview questions](https://github.com/altafjava/spring-interview-questions-answers)
+- [PHP Interview questions](https://github.com/Devinterview-io/php-interview-questions)
+- [Python Interview questions](https://github.com/Devinterview-io/python-interview-questions)
+- [Django Interview questions](https://github.com/Ujjawal-Anand/django-interview)
+- [SQL Interview questions](https://github.com/kansiris/SQL-interview-questions/tree/master)
+- [Cracking the SQL interview](https://github.com/xoraus/CrackingTheSQLInterview)
 
 # Ejercicios más comunes en entrevistas
 
