@@ -9,7 +9,7 @@ Recursos varios para prepararte para una entrevista técnica
     - [Principios SOLID](#principios-solid)
     - [Principios DRY, KISS, YAGNI, GRASP y LoD](#dry)
     - [Cleand Code](#clean-code)
-    - [Buenas prácticas en:](#buenas-practicas-en:)
+    - [Buenas prácticas en...](#buenas-practicas-en)
 - [Algoritmos y Estucturas de Datos](#algoritmos-y-estructuras-de-datos)
 - [Patrones de diseño](#patrones-de-diseño)
 - [Preguntas más frecuentes](#preguntas-más-frecuentes)
