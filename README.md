@@ -70,6 +70,8 @@ Recursos varios para prepararte para una entrevista técnica
 ## Vue.js
 [12 VueJS Best Practices](https://learnvue.co/articles/vue-best-practices)
 
+[Vue Patterns](https://learn-vuejs.github.io/vue-patterns/patterns/#component-declaration)
+
 ## React.js
 
 [10 Best Practices for Writing Clean React Code](https://www.turing.com/kb/writing-clean-react-code)
@@ -100,6 +102,23 @@ Recursos varios para prepararte para una entrevista técnica
 
 [Python Best Practices to Follow in 2023](https://aglowiditsolutions.com/blog/python-best-practices/)
 
+## dJango
+
+[dJango best practices 2022](https://www.linkedin.com/pulse/django-best-practices-2022-akshata-murudkar/)
+
+[Django Model Best Practices: Tips and Tricks for Clean and Efficient Code](https://medium.com/@schopade333/django-model-best-practices-c5c8a142dfc)
+
+## Dart
+
+[Effective Dart: Design](https://dart.dev/effective-dart/design)
+
+## Flutter
+
+[Flutter Best Practices](https://itnext.io/flutter-best-practices-part-1-e89467ea4823)
+
+[The Dart Way: Best Coding Practices](https://articles.wesionary.team/the-dart-way-best-coding-practices-6ac693736090)
+
+[10 Best Practices Every Flutter Developer Should Follow](https://somniosoftware.com/post/top-10-flutter-best-practices)
 ## Java
 
 [Java Best Practices (recomendado)](https://github.com/in28minutes/java-best-practices)
