@@ -27,6 +27,18 @@ Recursos varios para prepararte para una entrevista técnica
 
 [SOLID en React.JS Inglés](https://medium.com/docler-engineering/applying-solid-to-react-ca6d1ff926a4)
 
+[SOLID en Java Inglés](https://medium.com/@shavi22/solid-principles-in-java-cf9f5b167600)
+
+[SOLID en Java con Ejemplos Inglés](https://www.javaguides.net/2020/01/solid-principles-in-java-with-examples.html)
+
+[SOLID en C++ Inglés](https://nexwebsites.com/blog/solid-design-principles/)
+
+[SOLID en C++ con implemetación y ejemplos Inglés](https://medium.com/@aleksandra_shershen/solid-principles-implementation-and-examples-in-c-99f0d7e3e868)
+
+[SOLID en Python](https://realpython.com/solid-principles-python/)
+
+
+
 *********
 
 ### DRY
