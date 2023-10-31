@@ -156,23 +156,38 @@ Recursos varios para prepararte para una entrevista técnica
 ## Estructuras de datos
 
 [JavaScript Algorithms and Data Structures](https://github.com/trekhleb/javascript-algorithms)
+
 [Python Data Structures](https://www.geeksforgeeks.org/python-data-structures/)
+
 [Top Data Structures & Algorithms in Java That You Need to Know](https://medium.com/edureka/data-structures-algorithms-in-java-d27e915db1c5)
+
 [Discovering PHP Data Structures: Arrays, Linked Lists, and Binary Trees](https://medium.com/@london.lingo.01/discovering-php-data-structures-arrays-linked-lists-and-binary-trees-501566f83bad)
+
 [Efficient data structures for PHP 7](https://medium.com/@rtheunissen/efficient-data-structures-for-php-7-9dda7af674cd)
+
 [C++'s Built-In Data Structures](https://www.codecademy.com/learn/c-plus-plus-for-programmers/modules/cpp-built-in-data-structures/cheatsheet)
+
 [Data Structures using C | What are the Data Structure in C and How it works?](https://www.mygreatlearning.com/blog/data-structures-using-c/)
+
 
 ## Algoritmos
 
 [Algoritmos en Javascript](https://github.com/TheAlgorithms/JavaScript)
+
 [Algoritmos en Python](https://github.com/TheAlgorithms/Python)
+
 [Algoritmos en Java](https://github.com/TheAlgorithms/Java)
+
 [Algoritmos en C](https://github.com/TheAlgorithms/C)
+
 [Algoritmos en Go](https://github.com/TheAlgorithms/Go)
+
 [Algoritmos en C++](https://github.com/TheAlgorithms/C-Plus-Plus)
+
 [Algoritmos en PHP](https://github.com/TheAlgorithms/PHP)
+
 [Algoritmos en Typescript](https://github.com/TheAlgorithms/TypeScript)
+
 
 
 ## Visualizar algoritmos
