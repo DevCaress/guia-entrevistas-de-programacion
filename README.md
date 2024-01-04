@@ -1,9 +1,8 @@
 
-# Recursos
-Recursos varios para prepararte para una entrevista técnica
+# Guía para entrevistas tecnicas como Ingeniero de software
 
 
-# Índice
+## Índice
 
 - [Buenas práticas](#buenas-practicas)
     - [Principios SOLID](#principios-solid)
@@ -11,13 +10,19 @@ Recursos varios para prepararte para una entrevista técnica
     - [Cleand Code](#clean-code)
     - [Buenas prácticas en...](#buenas-practicas-en)
 - [Algoritmos y Estucturas de Datos](#algoritmos-y-estructuras-de-datos)
+    - [Complejidad algoritmica](#complejidad-algoritmica)
+    - [Estructuras de datos](#estructuras-de-datos)
+    - [Algoritmos](#algoritmos)
+    - [Visualizar algoritmos](visualizar-algoritmos)
+    - [Practicar algoritmos y estructuras de datos](#practicar-algoritmos-y-estructuras-de-datos)
 - [Patrones de diseño](#patrones-de-diseño)
 - [Preguntas más frecuentes](#preguntas-más-frecuentes)
 - [Ejercicios más comunes en entrevistas](#ejercicios-mas-comunes-en-entrevistas)
-- [Practicar algoritmos y estructuras de datos](#practicar-algoritmos-y-estructuras-de-datos)
+- [Control de Versiones](#control-de-versiones)
 
 
-# Buenas practicas
+
+## Buenas practicas
 
 ### Principios SOLID
 
@@ -65,9 +70,9 @@ Recursos varios para prepararte para una entrevista técnica
 
 ### Clean architecture
 
-# Buenas practicas en:
+## Buenas practicas en:
 
-## Javascript
+### Javascript
 
 [Guidelines for writing JavaScript code examples](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Writing_style_guide/Code_style_guide/JavaScript)
 
@@ -79,12 +84,12 @@ Recursos varios para prepararte para una entrevista técnica
 
 [30 JavaScript Best Practices for Beginners](https://code.tutsplus.com/24-javascript-best-practices-for-beginners--net-5399t)
 
-## Vue.js
+### Vue.js
 [12 VueJS Best Practices](https://learnvue.co/articles/vue-best-practices)
 
 [Vue Patterns](https://learn-vuejs.github.io/vue-patterns/patterns/#component-declaration)
 
-## React.js
+### React.js
 
 [10 Best Practices for Writing Clean React Code](https://www.turing.com/kb/writing-clean-react-code)
 
@@ -94,7 +99,7 @@ Recursos varios para prepararte para una entrevista técnica
 
 [React Best Practices Every Developer Have to Follow in 2023](https://technostacks.com/blog/react-best-practices/)
 
-## Angular
+### Angular
 
 [10 Best Practices for Building Scalable Angular Applications — With examples](https://medium.com/@mattias.trnqvist/10-best-practices-for-building-scalable-angular-applications-with-examples-efdfe2a5b4e8)
 
@@ -102,36 +107,37 @@ Recursos varios para prepararte para una entrevista técnica
 
 [Angular coding style guide](https://angular.io/guide/styleguide)
 
-## Typescript
+### Typescript
 
 [TypeScript best practices by AWS](https://docs.aws.amazon.com/prescriptive-guidance/latest/best-practices-cdk-typescript-iac/typescript-best-practices.html)
 
 [TypeScript Best Practices 2021](https://medium.com/@warkiringoda/typescript-best-practices-2021-a58aee199661)
 
-## Python
+### Python
 
 [Code Style in Python](https://docs.python-guide.org/writing/style/)
 
 [Python Best Practices to Follow in 2023](https://aglowiditsolutions.com/blog/python-best-practices/)
 
-## dJango
+### dJango
 
 [dJango best practices 2022](https://www.linkedin.com/pulse/django-best-practices-2022-akshata-murudkar/)
 
 [Django Model Best Practices: Tips and Tricks for Clean and Efficient Code](https://medium.com/@schopade333/django-model-best-practices-c5c8a142dfc)
 
-## Dart
+### Dart
 
 [Effective Dart: Design](https://dart.dev/effective-dart/design)
 
-## Flutter
+### Flutter
 
 [Flutter Best Practices](https://itnext.io/flutter-best-practices-part-1-e89467ea4823)
 
 [The Dart Way: Best Coding Practices](https://articles.wesionary.team/the-dart-way-best-coding-practices-6ac693736090)
 
 [10 Best Practices Every Flutter Developer Should Follow](https://somniosoftware.com/post/top-10-flutter-best-practices)
-## Java
+
+### Java
 
 [Java Best Practices (recomendado)](https://github.com/in28minutes/java-best-practices)
 
@@ -139,56 +145,75 @@ Recursos varios para prepararte para una entrevista técnica
 
 [10 best practices in Java](https://medium.com/@alexthedev/10-best-practices-in-java-dc0b06dda858)
 
-## C++
+### C++
 
 [Collecting the best C++ practices](https://medium.com/@Code_Analysis/collecting-the-best-c-practices-4b867006849f)
 
 [Boost Your C++ Coding Skills: 5 Tips For Faster, Better Code](https://programminggyan.com/5-cpp-tips-for-faster-better-code/)
 
-## PHP
+### PHP
 
 [PHP Programming Best Practices and Coding Styles](https://medium.com/techlaboratory/php-programming-best-practices-and-coding-styles-e43234446fd3)
 
 [PHP Best Practices](https://phpbestpractices.org/)
 
-# Algoritmos y estructuras de datos
+## Algoritmos y estructuras de datos
 
-## Estructuras de datos
+### Complejidad algorítmica
 
-[JavaScript Algorithms and Data Structures](https://github.com/trekhleb/javascript-algorithms)
+- [¿Qué es la complejidad algorítmica y con qué se come?](https://medium.com/@joseguillermo_/qué-es-la-complejidad-algorítmica-y-con-qué-se-come-2638e7fd9e8c)
 
-[Python Data Structures](https://www.geeksforgeeks.org/python-data-structures/)
+- [Introducción a Big O Notation](https://medium.com/nowports-tech/introducción-a-big-o-notation-95ecca8bd866)
 
-[Top Data Structures & Algorithms in Java That You Need to Know](https://medium.com/edureka/data-structures-algorithms-in-java-d27e915db1c5)
-
-[Discovering PHP Data Structures: Arrays, Linked Lists, and Binary Trees](https://medium.com/@london.lingo.01/discovering-php-data-structures-arrays-linked-lists-and-binary-trees-501566f83bad)
-
-[Efficient data structures for PHP 7](https://medium.com/@rtheunissen/efficient-data-structures-for-php-7-9dda7af674cd)
-
-[C++'s Built-In Data Structures](https://www.codecademy.com/learn/c-plus-plus-for-programmers/modules/cpp-built-in-data-structures/cheatsheet)
-
-[Data Structures using C | What are the Data Structure in C and How it works?](https://www.mygreatlearning.com/blog/data-structures-using-c/)
+- [Analysis of Algorithms | Big-O analysis](https://www.geeksforgeeks.org/analysis-algorithms-big-o-analysis/)
 
 
-## Algoritmos
 
-[Algoritmos en Javascript](https://github.com/TheAlgorithms/JavaScript)
+### Estructuras de datos
 
-[Algoritmos en Python](https://github.com/TheAlgorithms/Python)
+- [JavaScript Algorithms and Data Structures](https://github.com/trekhleb/javascript-algorithms)
 
-[Algoritmos en Java](https://github.com/TheAlgorithms/Java)
+- [Python Data Structures](https://www.geeksforgeeks.org/python-data-structures/)
 
-[Algoritmos en C](https://github.com/TheAlgorithms/C)
+- [Top Data Structures & Algorithms in Java That You Need to Know](https://medium.com/edureka/data-structures-algorithms-in-java-d27e915db1c5)
 
-[Algoritmos en Go](https://github.com/TheAlgorithms/Go)
+- [Discovering PHP Data Structures: Arrays, Linked Lists, and Binary Trees](https://medium.com/@london.lingo.01/discovering-php-data-structures-arrays-linked-lists-and-binary-trees-501566f83bad)
 
-[Algoritmos en C++](https://github.com/TheAlgorithms/C-Plus-Plus)
+- [Efficient data structures for PHP 7](https://medium.com/@rtheunissen/efficient-data-structures-for-php-7-9dda7af674cd)
 
-[Algoritmos en PHP](https://github.com/TheAlgorithms/PHP)
+- [C++'s Built-In Data Structures](https://www.codecademy.com/learn/c-plus-plus-for-programmers/modules/cpp-built-in-data-structures/cheatsheet)
 
-[Algoritmos en Typescript](https://github.com/TheAlgorithms/TypeScript)
+- [Data Structures using C | What are the Data Structure in C and How it works?](https://www.mygreatlearning.com/blog/data-structures-using-c/)
 
 
+### Algoritmos
+
+- [Algoritmos en Javascript](https://github.com/TheAlgorithms/JavaScript)
+
+- [Algoritmos en Python](https://github.com/TheAlgorithms/Python)
+
+- [Algoritmos en Java](https://github.com/TheAlgorithms/Java)
+
+- [Algoritmos en C](https://github.com/TheAlgorithms/C)
+
+- [Algoritmos en Go](https://github.com/TheAlgorithms/Go)
+
+- [Algoritmos en C++](https://github.com/TheAlgorithms/C-Plus-Plus)
+
+- [Algoritmos en PHP](https://github.com/TheAlgorithms/PHP)
+
+- [Algoritmos en Typescript](https://github.com/TheAlgorithms/TypeScript)
+
+### Practicar algoritmos y estructuras de datos
+- [CodeWars](https://www.codewars.com/)
+
+- [LeetCode](https://leetcode.com)
+
+- [HackerRank](https://www.hackerrank.com/)
+
+- [CoderByte](https://coderbyte.com/)
+
+- [xercism](https://exercism.org/)
 
 ## Visualizar algoritmos
 
@@ -220,7 +245,7 @@ En esta web podrás ver como funcionan de manera visual los siguientes algoritmo
 - Binary Search Tree
     - AVL Tree
 
-# Patrones de diseño
+## Patrones de diseño
 [Patrones de diseño Español (Recomendación personal)](https://refactoring.guru/es/design-patterns)
 
 [Patrones de diseño en Javascript](https://www.patterns.dev/posts)
@@ -252,18 +277,9 @@ En esta web podrás ver como funcionan de manera visual los siguientes algoritmo
     - Interpreter
     - Visitor
 
-# Practicar algoritmos y estructuras de datos
-[CodeWars](https://www.codewars.com/)
 
-[LeetCode](https://leetcode.com)
 
-[HackerRank](https://www.hackerrank.com/)
-
-[CoderByte](https://coderbyte.com/)
-
-[xercism](https://exercism.org/)
-
-# Preguntas más frecuentes
+## Preguntas más frecuentes
 - [Vue Interview questions](https://github.com/sudheerj/vuejs-interview-questions)
 - [React Interview questions](https://github.com/sudheerj/reactjs-interview-questions)
 - [Angualar Interview questions](https://github.com/sudheerj/angular-interview-questions)
@@ -276,18 +292,43 @@ En esta web podrás ver como funcionan de manera visual los siguientes algoritmo
 - [SQL Interview questions](https://github.com/kansiris/SQL-interview-questions/tree/master)
 - [Cracking the SQL interview](https://github.com/xoraus/CrackingTheSQLInterview)
 
-# Ejercicios más comunes en entrevistas
 
-- Invertir un array/string
-- Eliminar duplicados de un array/string
-- 
+## Control de Versiones
+
+- [La guía para principiantes de Git y Github](https://www.freecodecamp.org/espanol/news/guia-para-principiantes-de-git-y-github/)
+
+- [Git Avanzado: Comandos Avanzados Además de los Básicos](https://kinsta.com/es/blog/git-avanzado/)
+
+- [Comparing Git workflows: What you should know](https://www.atlassian.com/git/tutorials/comparing-workflows)
+
+### Workflows
+
+- [Cinco Git Workflows para mejorar nuestros proyectos](https://www.babelgroup.com/es/Media/Blog/Abril-2021/Cinco-Git-Workflows-para-mejores-proyectos)
+
+- [Git feature branch workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
+- [Gitflow workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
+- [Forking workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow)
+
+## CI/CD
+
+- [Introducción a CI/CD](https://medium.com/@diego.coder/introducción-a-ci-cd-be79d0beafad)
+
+- [Comprensión de la CI/CD by AWS](https://docs.aws.amazon.com/es_es/prescriptive-guidance/latest/strategy-cicd-litmus/understanding-cicd.html)
+
+- [What is CI/CD?](https://www.freecodecamp.org/news/what-is-ci-cd/)
+
+- [What is a DevOps pipeline?](https://resources.github.com/devops/pipeline/)
+
+## Contenedores y Orquestación
+
+- [¿Qué son los contenedores?](https://www.hpe.com/mx/es/what-is/containers.html)
+
+- [¿Qué es un contenedor? by Microsoft](https://azure.microsoft.com/es-mx/resources/cloud-computing-dictionary/what-is-a-container)
+
+- [Contenedores y Orquestación (Recomendado)](https://medium.com/@villamorosjuan/contenedores-y-orquestación-transformando-la-gestión-de-aplicaciones-en-producción-0f2ebbd8aac5)
 
 
-# Preguntas más comunes de Javascript
 
-- Qué es el Event Loop??
-    - [Visualizar Event Loop](http://latentflip.com/loupe/)
-    - [Ejemplos para entender Event Loop](https://www.jsv9000.app)
 ## Temas
 
 VUEJS 
