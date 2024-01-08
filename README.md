@@ -16,6 +16,11 @@
     - [Visualizar algoritmos](visualizar-algoritmos)
     - [Practicar algoritmos y estructuras de datos](#practicar-algoritmos-y-estructuras-de-datos)
 - [Patrones de diseño](#patrones-de-diseño)
+- [Bases de datos](#bases-de-datos)
+    - [ORM's](#orms)
+- [Arquitectura de Software](#arquitectura-de-software)
+    - [Frontend](#frontend)
+    - [Backend](#backend)
 - [Preguntas más frecuentes](#preguntas-más-frecuentes)
 - [Ejercicios más comunes en entrevistas](#ejercicios-mas-comunes-en-entrevistas)
 - [Control de Versiones](#control-de-versiones)
@@ -127,6 +132,8 @@
 [dJango best practices 2022](https://www.linkedin.com/pulse/django-best-practices-2022-akshata-murudkar/)
 
 [Django Model Best Practices: Tips and Tricks for Clean and Efficient Code](https://medium.com/@schopade333/django-model-best-practices-c5c8a142dfc)
+
+[The 4 Clean Code Principles in Django](https://betterprogramming.pub/clean-code-principles-in-django-b0563a4e12f5)
 
 ### Dart
 
@@ -280,9 +287,69 @@ En esta web podrás ver como funcionan de manera visual los siguientes algoritmo
     - Interpreter
     - Visitor
 
+## Bases de datos
+- [20 ejemplos de consultas SQL básicas para principiantes: Una visión completa](https://learnsql.es/blog/20-ejemplos-de-consultas-sql-basicas-para-principiantes-una-vision-completa/)
+- [Top 50+ Database Interview Questions And Answers](https://www.softwaretestinghelp.com/database-interview-questions/)
+- [Top 50 Database Interview Questions and Answers (2024)](https://www.guru99.com/database-interview-questions.html)
+- [Choosing the Best Database: SQL vs NoSQL](https://medium.com/codex/choosing-the-best-database-sql-vs-nosql-a816a7ec09fc)
+- []()
+### ORM's
+- [¿Qué es un ORM?](https://wildpasco.medium.com/qué-es-un-orm-backend-bee59674e1d0)
+- [Introducción a Mongoose para MongoDB](https://www.freecodecamp.org/espanol/news/introduccion-a-mongoose-para-mongodb/)
+- [The Ultimate Guide To Get Started With Sequelize ORM](https://levelup.gitconnected.com/the-ultimate-guide-to-get-started-with-sequelize-orm-238588d3516e)
+
+
+
+## Arquitectura de Software
+- [La guía definitiva de la arquitectura de software](https://medium.com/@ktufernando/la-guía-definitiva-de-la-arquitectura-del-software-f419db9c6bf7)
+- [Entendiendo a la arquitectura limpia](https://nescalro.medium.com/entendiendo-a-la-arquitectura-limpia-7877ad3a0a47)
+- [Los 10 patrones comunes de arquitectura de software](https://medium.com/@maniakhitoccori/los-10-patrones-comunes-de-arquitectura-de-software-d8b9047edf0b)
+- [Arquitectura Hexagonal](https://medium.com/@edusalguero/arquitectura-hexagonal-59834bb44b7f)
+- [Domain Driven Design: principios, beneficios y elementos — Primera Parte](https://medium.com/@jonathanloscalzo/domain-driven-design-principios-beneficios-y-elementos-primera-parte-aad90f30aa35)
+
+
+### Frontend
+- [Arquitectura Hexagonal en el FrontEnd](https://softwarecrafters.io/react/arquitectura-hexagonal-frontend)
+- [Arquitecturas frontend: "Enfoque "modular simple](https://codigoencasa.com/arquitecturas-frontend-enfoque-modular-simple/)
+- [A Comprehensive Guide to Modern Frontend Architecture Patterns](https://medium.com/@johnadjanohoun/a-comprehensive-guide-to-modern-frontend-architecture-patterns-eb39debbd503)
+- [Alejándonos de ReactJs y VueJs en frontend usando Clean Architecture](https://xurxodev.com/frontend-clean_architecture/)
+- [La Arquitectura Hexagonal: un enfoque para desarrollar aplicaciones robustas en React, Angular y Vue con ejemplos de código](https://dev.to/dennysjmarquez/la-arquitectura-hexagonal-un-enfoque-para-desarrollar-aplicaciones-robustas-en-react-angular-y-vue-con-ejemplos-de-codigo-l4l)
+- [A Definitive Guide to Front-end Clean Architecture](https://eduardo-ottaviani.medium.com/a-definitive-guide-to-front-end-clean-architecture-3a62418becb4)
+- [Introducción a la arquitectura de microfrontends con un ejemplo en React.](https://www.paradigmadigital.com/dev/introduccion-arquitectura-microfrontends-ejemplo-react/)
+- [MicroFrontEnd](https://devjaime.medium.com/microfrontend-4eecf1498cd1)
+- [A Comprehensive Guide to Micro Frontend Architecture](https://medium.com/appfoster/a-comprehensive-guide-to-micro-frontend-architecture-cc0e31e0c053)
+- [Microservices vs. Micro Frontends: What's the Difference?](https://dev.to/pavanbelagatti/microservices-vs-micro-frontends-whats-the-difference-33je)
+- React Clean Architecture
+    - [Clean Architecture With React](https://betterprogramming.pub/clean-architecture-with-react-cc097a08b105)
+    - [Clean Architecture: Applying with React](https://dev.to/rubemfsv/clean-architecture-applying-with-react-40h6)
+    - [React Clean Architecture](https://github.com/eduardomoroni/react-clean-architecture)
+    - [Clean Architecture: Typescript and React](https://paulallies.medium.com/clean-architecture-typescript-and-react-8e509098abfe)
+- Vue JS Clean Architecture
+    - [Clean Architecture with VueJS](https://www.linkedin.com/pulse/clean-architecture-vuejs-ahsan-riaz/)
+    - [Vue Clean Architecture Github](https://github.com/smotastic/vue-clean-architecture)
+    - [Separating business logic from UI frameworks (React, Vue, Svelte, Angular, etc.) using clean architecture pattern](https://github.com/shamscorner/bloc-vue-3-clean-pattern)
+    - [Clean Architecture VueJS](https://github.com/thanhchungbtc/vue-shopping-clean-architecture)
+
+### Backend
+- Clean Architecture Java
+    - [Clean Architecture en la vida real JAVA](https://medium.com/@soyjuanmalopez/clean-architecture-en-la-vida-real-9da710e5ad4a)
+    - [Clean Architecture with Spring Boot: A good idea?](https://medium.com/@viniciusromualdobusiness/clean-architecture-with-spring-boot-a-good-idea-d6f97e450130)
+- Clean Architecture Python
+    - [Understanding clean architecture in Python — Deep dive on the code](https://medium.com/@surajit.das0320/understanding-clean-architecture-in-python-deep-dive-on-the-code-17141dc5761a)
+    - [Python Clean Architecture](https://github.com/pcah/python-clean-architecture)
+    - [Clean Architecture in Django](https://medium.com/21buttons-tech/clean-architecture-in-django-d326a4ab86a9)
+    - [Django Clean Architecture](https://github.com/jacob-y/django-clean-architecture)
+- Clean Architecture Express JS
+    - [Clean Architecture en Node y Express](https://www.linkedin.com/pulse/clean-architecture-en-node-y-express-odannys-de-la-cruz/?originalSubdomain=es)
+    - [Clean Architecture in Node.js](https://medium.com/@ben.dev.io/clean-architecture-in-node-js-39c3358d46f3)
+    - [Node.js Clean Architecture](https://github.com/panagiop/node.js-clean-architecture)
+- Clean Architecture PHP
+    - [Clean Architecture with PHP](https://medium.com/unil-ci-software-engineering/clean-architecture-with-php-22de915a6c50)
+    - [Clean Architecture with Laravel](https://dev.to/bdelespierre/how-to-implement-clean-architecture-with-laravel-2f2i)
 
 
 ## Preguntas más frecuentes
+- [Kill Your Tech Interview (recomendado)](https://www.fullstack.cafe)
 - [Vue Interview questions](https://github.com/sudheerj/vuejs-interview-questions)
 - [React Interview questions](https://github.com/sudheerj/reactjs-interview-questions)
 - [Angualar Interview questions](https://github.com/sudheerj/angular-interview-questions)
@@ -294,7 +361,17 @@ En esta web podrás ver como funcionan de manera visual los siguientes algoritmo
 - [Django Interview questions](https://github.com/Ujjawal-Anand/django-interview)
 - [SQL Interview questions](https://github.com/kansiris/SQL-interview-questions/tree/master)
 - [Cracking the SQL interview](https://github.com/xoraus/CrackingTheSQLInterview)
-
+- Frontend Questions
+    - [Front End Interview Handbook](https://www.frontendinterviewhandbook.com/introduction/)
+    - [52 Frontend Interview Questions - JavaScript](https://dev.to/m_midas/52-frontend-interview-questions-javascript-59h6)
+    - [Front-end Developer Interview Questions](https://github.com/h5bp/Front-end-Developer-Interview-Questions?tab=readme-ov-file)
+    - [11 senior front end developer interview questions and answers](https://anywhere.epam.com/en/blog/senior-front-end-developer-interview-questions)
+    - [15 Frontend Developer Interview Questions (2023)](https://4dayweek.medium.com/15-frontend-developer-interview-questions-2023-91c7a9a628c1)
+    - [Frontend Interview Questions [Top 250+]](https://frontendinterviewquestions.medium.com/frontend-interview-questions-top-250-92ba361cbbbd)
+- Backend Questions
+    - [Top 100 back-end developer interview questions and answers 2023](https://www.turing.com/interview-questions/back-end)
+    - [top 18 backend developer interview questions answered](https://anywhere.epam.com/en/blog/top-18-backend-developer-interview-questions-answered)
+    - [Backend SWE interview questions](https://github.com/tamhoang1412/backend-swe-interview-questions)
 
 ## Control de Versiones
 
@@ -331,312 +408,6 @@ En esta web podrás ver como funcionan de manera visual los siguientes algoritmo
 - [Contenedores y Orquestación (Recomendado)](https://medium.com/@villamorosjuan/contenedores-y-orquestación-transformando-la-gestión-de-aplicaciones-en-producción-0f2ebbd8aac5)
 
 
-
-## Temas
-
-VUEJS 
-
-Worked with viewer version 2 second version (NOX framework) 
-
-Composition API- what kind of things u use- (own hooks,ref methods,  
-
-Typescript integration have u find it difficult- working with JS or typescript in vuejs-  
-
- Mutation action and so on (explain) 
-
- Blogic 
-
-Environment and ecosystem 
-
-Jenkins pipeline
-
-Azure AWS- file management system S3 buckets-  
-
-Share keys 
-
-Master passwords 
-
-Designing principles
-
-Predefine Es-lint.  Code readable 
-
-Improve the code-  layer of abstraction, Automation test, unit testing, end to end testing 
-
-Define release flow GIT – 
-
- 
-
- 
-
-****************
-
-- * Coding task**
-
-find ids count in object
-
- 
-
-customer comunication
-
-Waterfall, agile, cascade methodologies
-
-calculate the complexity of a ticket or user story.
-
-estimate in relative units.
-
-Dif using points and hours
-
- 
-
-Designing architecture
-
-Object oriented programming
-
-paradigm & others (functional programming i.e…..)
-
-Base paradigm principals (object oriented)
-
-WHAT ARE THE BEST PRACTICES THAT U APPLY IN YOUR PROJECT
-
- 
-
-Data bases
-
-Have u work with databases? Sql
-
-Do u know some techniques of optimization (normalize my table, my information from many to many so I don’t have to look up for every single email, primary keys, (index information)limited 10,000 thousand records, no doing a query with 2 base connection, joing, inner join reck heads? To find specific pattern that brings all your requirements.
-
-Dif sql and non sql data bases
-
- 
-
-SOFTWARE CONSTRUCTION QUESTIONS
-
-Make the answer short for this questions until we star with framework
-
-Styling- CSSS, Flybox lay out, Dif btw flexbox and green lay out, complex conditions in CSS, Qerys
-
-create the naming of the CSS
-
-dif frameworks for CSS
-
-CSS defining variables
-
-Create theme for CSS
-
-HTML
-
-Semantic mark up
-
-accessibility
-
-DOM in HTML
-
-Shadow dom
-
-Graphics
-
-optimize an HTML page
-
-data visualization tools, D3 high charts,
-
-Map box.
-
- 
-
-PROGRAMING LANGUAJES
-
-JS
-
-hosting
-
-type variables in JS- array
-
-promise and asynchrony way-
-
-multithread or single thread
-
-manage more than one thread
-
-HTTP works
-
-AJAX
-
-Graphql- how it works
-
-Progressive web app
-
-Configure some boundless
-
-deal with troubles in production
-
-AWS-  optimize services
-
-Code quality – unit testing tools
-
-analysis tools for the code- solarq
-
-metrics  unit testing-
-
-GIT
-
-Garbage collector
-
- 
-
- 
-
- 
-
-Compare HTTP request and web sockets.
-
-Cloud (ur experience and questions according to)
-
-Software development process
-
-Life cycles (what is it? How it works with it)
-
-Kanban and scrum
-
-Engineer based on previous exp risk. What tools to measure risk.
-
-Requirements functional and non-functional
-
-Optional, mostly for PM managers good to understand. RCA metrics
-
-RACI es un acrónimo en inglés (Responsable, Accountable, Consulted, Informed) que ayuda a los equipos a brindar
-
-claridad con respecto a la asignación de roles en un proyecto y determinar quién es el responsable de una tarea específica
-
-Integration testing
-
-Code quality
-
-solid principles
-
-dif btw class and object
-
-encapsulation
-
-architecture patterns i.e. MVC
-
-how microservices work
-
-bootstrap and Semantic elements in HTML
-
-Java -Single treat or Multithreaded
-
-Asynchronies task-JavaScript
-
-promises
-
-promise all.
-
-promise rest.
-
-End to end testing
-
- 
-
-Functional and non functional (how much time should tell per request, browser supports- non functional) 
-
-RACI MATRIX – root cause analysis- 
-
-Used case diagram  
-
-Software architecture/techniques 
-
-JavaScript-object oriented programing- explain some crucial parts of object oriented-  
-
-Caring techniques 
-
-SOLID principles,  
-
- 
-
-Data bases-
-
-What database u have been working with 
-
-Using sequel have u done like huge migration, which tools have u use
-
-injecting 
-
-Mongo DB (dynamo DB)
-
- 
-
-CSS framework
-
-Script or Flex
-
-sass lass advantages u see on regular CSS
-
-Variables is there any way to declare a variable in the normal CSS
-
-Mixings- maybe something else u have found helpful from pre processors
-
-Nesting deviarables  
-
-Unit since CSS 
-
-Difference btwn RAM and pixels
-
-Difference btw Fixet & absolut 
-
-Set collection / what is it 
-
-What about net collection
-
-Week map and week set map collection
-
-Garbage collector
-
-Proxy API- it has a crucial role in nodejs framework  track observability and
-
-reflect API.  
-
-Asynchronous this flow 
-
-Event loop 
-
-Web API 
-
-Call stack
-
-How the event knows this piece of code is ready to execute?- 
-
-Macro cube 
-
-JavaScript 
-
-The commands from JavaScript or is browser related  
-
- 
-
-Storages- 
-
-Cookies 
-
-HTTP 
-
-Dif local storage & session storage
-
-Networking 
-
- 
-
-HTTP difference HTPS 
-
-How HTTPS works in plain English- how the protocol works  
-
-REST concept 
-
-GraphQl 
-
-Vuejs, excel library-  
-
-In oksys have u implement such things /interceptor
 ## Authors
 
 - [@devcaress](https://www.github.com/devcaress)
