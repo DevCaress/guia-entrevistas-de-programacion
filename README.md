@@ -7,7 +7,7 @@
 - [Buenas práticas](#buenas-practicas)
     - [Principios SOLID](#principios-solid)
     - [Principios DRY, KISS, YAGNI, GRASP y LoD](#dry)
-    - [Cleand Code](#clean-code)
+    - [Clean Code](#clean-code)
     - [Buenas prácticas en...](#buenas-practicas-en)
 - [Algoritmos y Estucturas de Datos](#algoritmos-y-estructuras-de-datos)
     - [Complejidad algoritmica](#complejidad-algoritmica)
