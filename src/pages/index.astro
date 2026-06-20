@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import DocsLayout from "../layouts/DocsLayout.astro";
+import { getFirstGuidePath, groupGuideEntries } from "../utils/guide";
+
+const entries = await getCollection("guide");
+const firstGuidePath = getFirstGuidePath(entries);
+const groups = groupGuideEntries(entries);
+---
+
+<DocsLayout
+  title="Guia de entrevistas tecnicas"
+  description="Guia navegable para preparar entrevistas tecnicas de software."
+  groups={groups}
+>
+  <article class="prose">
+    <h1>Guia de entrevistas tecnicas</h1>
+    <p>Abre la primera seccion disponible para empezar a estudiar por tema.</p>
+    <p><a href={firstGuidePath}>Ir a la guia</a></p>
+  </article>
+</DocsLayout>

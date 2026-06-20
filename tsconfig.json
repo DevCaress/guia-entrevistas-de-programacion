@@ -7,7 +7,7 @@
       "@layouts/*": ["src/layouts/*"],
       "@utils/*": ["src/utils/*"]
     },
-    "types": ["vitest/globals"]
+    "types": ["node", "vitest/globals"]
   },
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist", "node_modules"]

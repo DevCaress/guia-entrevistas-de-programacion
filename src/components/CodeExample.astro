@@ -1,0 +1,28 @@
+---
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const { title, description } = Astro.props;
+---
+
+<section class="code-example">
+  {title && <h3>{title}</h3>}
+  {description && <p>{description}</p>}
+  <slot />
+</section>
+
+<style>
+  .code-example {
+    margin: 1.5rem 0;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background: color-mix(in srgb, var(--panel-bg) 82%, transparent);
+  }
+
+  .code-example h3 {
+    margin-top: 0;
+  }
+</style>

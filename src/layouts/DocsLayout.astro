@@ -1,0 +1,90 @@
+---
+import Sidebar from "../components/Sidebar.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import "../styles/global.css";
+import type { SidebarGroup } from "../utils/guide";
+
+type Props = {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  groups: SidebarGroup[];
+};
+
+const { title, description, canonicalPath, groups } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    {canonicalPath && <link rel="canonical" href={new URL(canonicalPath, Astro.site ?? Astro.url).toString()} />}
+    <title>{title}</title>
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem("guide-theme");
+        document.documentElement.dataset.theme = stored === "light" ? "light" : "dark";
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="docs-shell">
+      <Sidebar groups={groups} currentPath={currentPath} />
+      <div class="docs-main">
+        <header class="docs-header">
+          <slot name="header-actions" />
+          <ThemeToggle />
+        </header>
+        <main class="docs-content">
+          <slot />
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  .docs-shell {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: minmax(16rem, 20rem) minmax(0, 1fr);
+  }
+
+  .docs-main {
+    min-width: 0;
+  }
+
+  .docs-header {
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--border);
+    background: color-mix(in srgb, var(--page-bg) 94%, transparent);
+    padding: 0.75rem clamp(1rem, 4vw, 3rem);
+  }
+
+  .docs-content {
+    width: min(100%, 56rem);
+    padding: 2rem clamp(1rem, 4vw, 3rem) 5rem;
+  }
+
+  @media (max-width: 860px) {
+    .docs-shell {
+      grid-template-columns: 1fr;
+    }
+
+    .docs-header {
+      justify-content: space-between;
+    }
+
+    .docs-content {
+      padding-top: 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,39 @@
+---
+type Reference = {
+  label: string;
+  url: string;
+};
+
+type Props = {
+  references?: Reference[];
+};
+
+const { references = [] } = Astro.props;
+---
+
+{references.length > 0 && (
+  <section class="references" aria-labelledby="references-title">
+    <h2 id="references-title">Referencias</h2>
+    <ul>
+      {references.map((reference) => (
+        <li>
+          <a href={reference.url} rel="noreferrer" target="_blank">{reference.label}</a>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
+
+<style>
+  .references {
+    margin-top: 3rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+  }
+
+  .references ul {
+    display: grid;
+    gap: 0.6rem;
+    padding-left: 1.2rem;
+  }
+</style>

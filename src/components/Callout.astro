@@ -1,0 +1,21 @@
+---
+type Props = {
+  title?: string;
+};
+
+const { title } = Astro.props;
+---
+
+<aside class="callout">
+  {title && <strong>{title}</strong>}
+  <slot />
+</aside>
+
+<style>
+  .callout {
+    border-left: 4px solid var(--accent);
+    border-radius: 0.35rem;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    padding: 1rem;
+  }
+</style>
