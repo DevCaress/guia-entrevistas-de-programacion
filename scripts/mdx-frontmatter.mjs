@@ -11,6 +11,9 @@ export async function listMdxFiles(root) {
   return files.flat();
 }
 
+/**
+ * @returns {Promise<Record<string, any>>}
+ */
 export async function readMdxFrontmatter(path) {
   const source = await readFile(path, "utf8");
   const match = /^---\n([\s\S]*?)\n---/.exec(source);
@@ -44,11 +47,11 @@ function parseYamlSubset(yaml) {
       while (i < lines.length && lines[i].startsWith("  - ")) {
         const item = {};
         const first = lines[i].slice(4);
-        const [firstKey, firstValue] = first.split(/:\s+/);
+        const [firstKey, firstValue] = splitYamlPair(first);
         item[firstKey] = parseScalar(firstValue ?? "");
         i += 1;
         while (i < lines.length && /^    [A-Za-z]/.test(lines[i])) {
-          const [itemKey, itemValue] = lines[i].trim().split(/:\s+/);
+          const [itemKey, itemValue] = splitYamlPair(lines[i].trim());
           item[itemKey] = parseScalar(itemValue ?? "");
           i += 1;
         }
@@ -62,7 +65,7 @@ function parseYamlSubset(yaml) {
       const object = {};
       i += 1;
       while (i < lines.length && lines[i].startsWith("  ")) {
-        const [objectKey, objectValue] = lines[i].trim().split(/:\s+/);
+        const [objectKey, objectValue] = splitYamlPair(lines[i].trim());
         object[objectKey] = parseScalar(objectValue ?? "");
         i += 1;
       }
@@ -77,9 +80,25 @@ function parseYamlSubset(yaml) {
   return data;
 }
 
+function splitYamlPair(line) {
+  const index = line.indexOf(":");
+  if (index === -1) return [line, ""];
+  return [line.slice(0, index), line.slice(index + 1).trimStart()];
+}
+
 function parseScalar(value) {
   const trimmed = value.trim();
   if (trimmed === "[]") return [];
   if (/^-?\d+(\.\d+)?$/.test(trimmed)) return Number(trimmed);
+  if (
+    (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+    (trimmed.startsWith("'") && trimmed.endsWith("'"))
+  ) {
+    try {
+      return JSON.parse(trimmed);
+    } catch {
+      return trimmed.slice(1, -1);
+    }
+  }
   return trimmed.replace(/^["']|["']$/g, "");
 }

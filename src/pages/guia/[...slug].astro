@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
+import CodeExample from "../../components/CodeExample.astro";
 import ReferenceList from "../../components/ReferenceList.astro";
 import DocsLayout from "../../layouts/DocsLayout.astro";
 import { buildPageMeta } from "../../utils/seo";
@@ -28,6 +29,14 @@ const groups = groupGuideEntries(entries);
     <h1>{entry.data.title}</h1>
     <p>{entry.data.description}</p>
     <Content />
+    {entry.data.examples && entry.data.examples.length > 0 && (
+      <section aria-labelledby="examples-title">
+        <h2 id="examples-title">Ejemplos</h2>
+        {entry.data.examples.map((example) => (
+          <CodeExample title={example.title} description={example.description} language={example.language} />
+        ))}
+      </section>
+    )}
     <ReferenceList references={entry.data.references} />
   </article>
 </DocsLayout>

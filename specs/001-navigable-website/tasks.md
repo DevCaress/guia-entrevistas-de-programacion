@@ -18,14 +18,14 @@
 
 **Purpose**: Initialize the Astro static documentation site and baseline tooling.
 
-- [ ] T001 Create Astro 6.4.8 project metadata and npm scripts in package.json
-- [ ] T002 [P] Configure TypeScript for Astro in tsconfig.json
-- [ ] T003 [P] Configure Astro integrations, Shiki themes, and Tailwind Vite plugin in astro.config.mjs
-- [ ] T004 [P] Configure Tailwind content scanning and dark-mode selector in tailwind.config.mjs
-- [ ] T005 [P] Create global stylesheet with Tailwind imports and base design tokens in src/styles/global.css
-- [ ] T006 [P] Configure code formatting, linting, and ignored build output in .gitignore
-- [ ] T007 [P] Configure Vitest or equivalent unit test script for utilities in package.json
-- [ ] T008 [P] Configure Playwright or equivalent browser verification script in package.json
+- [x] T001 Create Astro 6.4.8 project metadata and npm scripts in package.json
+- [x] T002 [P] Configure TypeScript for Astro in tsconfig.json
+- [x] T003 [P] Configure Astro integrations, Shiki themes, and Tailwind Vite plugin in astro.config.mjs
+- [x] T004 [P] Configure Tailwind content scanning and dark-mode selector in tailwind.config.mjs
+- [x] T005 [P] Create global stylesheet with Tailwind imports and base design tokens in src/styles/global.css
+- [x] T006 [P] Configure code formatting, linting, and ignored build output in .gitignore
+- [x] T007 [P] Configure Vitest or equivalent unit test script for utilities in package.json
+- [x] T008 [P] Configure Playwright or equivalent browser verification script in package.json
 
 ---
 
@@ -35,22 +35,22 @@
 
 **CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T009 Define the guide content collection schema from contracts/content-frontmatter.md in src/content.config.ts
-- [ ] T010 [P] Create guide content types and sidebar data helpers in src/utils/guide.ts
-- [ ] T011 [P] Create SEO metadata helper functions in src/utils/seo.ts
-- [ ] T012 [P] Create markdown reference extraction script for README migration checks in scripts/extract-readme-references.mjs
-- [ ] T013 [P] Create content migration verification script in scripts/verify-content-migration.mjs
-- [ ] T014 [P] Create external reference link verification script in scripts/check-reference-links.mjs
-- [ ] T015 [P] Create base documentation layout shell in src/layouts/DocsLayout.astro
-- [ ] T016 [P] Create base sidebar component API in src/components/Sidebar.astro
-- [ ] T017 [P] Create theme toggle component with accessible controls in src/components/ThemeToggle.astro
-- [ ] T018 [P] Create reusable callout component for MDX content in src/components/Callout.astro
-- [ ] T019 [P] Create reusable code example component API in src/components/CodeExample.astro
-- [ ] T020 [P] Create reference list component API in src/components/ReferenceList.astro
-- [ ] T021 Create home route that redirects or links to the first guide page in src/pages/index.astro
-- [ ] T022 Create dynamic guide route shell for content collection pages in src/pages/guia/[...slug].astro
-- [ ] T023 Add baseline unit tests for guide sorting and grouping in tests/unit/guide.test.ts
-- [ ] T024 Add baseline unit tests for SEO metadata generation in tests/unit/seo.test.ts
+- [x] T009 Define the guide content collection schema from contracts/content-frontmatter.md in src/content.config.ts
+- [x] T010 [P] Create guide content types and sidebar data helpers in src/utils/guide.ts
+- [x] T011 [P] Create SEO metadata helper functions in src/utils/seo.ts
+- [x] T012 [P] Create markdown reference extraction script for README migration checks in scripts/extract-readme-references.mjs
+- [x] T013 [P] Create content migration verification script in scripts/verify-content-migration.mjs
+- [x] T014 [P] Create external reference link verification script in scripts/check-reference-links.mjs
+- [x] T015 [P] Create base documentation layout shell in src/layouts/DocsLayout.astro
+- [x] T016 [P] Create base sidebar component API in src/components/Sidebar.astro
+- [x] T017 [P] Create theme toggle component with accessible controls in src/components/ThemeToggle.astro
+- [x] T018 [P] Create reusable callout component for MDX content in src/components/Callout.astro
+- [x] T019 [P] Create reusable code example component API in src/components/CodeExample.astro
+- [x] T020 [P] Create reference list component API in src/components/ReferenceList.astro
+- [x] T021 Create home route that redirects or links to the first guide page in src/pages/index.astro
+- [x] T022 Create dynamic guide route shell for content collection pages in src/pages/guia/[...slug].astro
+- [x] T023 Add baseline unit tests for guide sorting and grouping in tests/unit/guide.test.ts
+- [x] T024 Add baseline unit tests for SEO metadata generation in tests/unit/seo.test.ts
 
 **Checkpoint**: Foundation ready - user story implementation can now begin.
 
@@ -64,23 +64,23 @@
 
 ### Tests and Verification for User Story 1
 
-- [ ] T025 [P] [US1] Add browser test for sidebar navigation between guide pages in tests/e2e/sidebar-navigation.spec.ts
-- [ ] T026 [P] [US1] Add browser test for direct guide page URL active sidebar state in tests/e2e/direct-section-url.spec.ts
-- [ ] T027 [P] [US1] Add responsive sidebar visual/behavior test for mobile collapse in tests/e2e/mobile-sidebar.spec.ts
-- [ ] T028 [P] [US1] Add content collection validation fixture for section pages in tests/unit/content-schema.test.ts
+- [x] T025 [P] [US1] Add browser test for sidebar navigation between guide pages in tests/e2e/sidebar-navigation.spec.ts
+- [x] T026 [P] [US1] Add browser test for direct guide page URL active sidebar state in tests/e2e/direct-section-url.spec.ts
+- [x] T027 [P] [US1] Add responsive sidebar visual/behavior test for mobile collapse in tests/e2e/mobile-sidebar.spec.ts
+- [x] T028 [P] [US1] Add content collection validation fixture for section pages in tests/unit/content-schema.test.ts
 
 ### Implementation for User Story 1
 
-- [ ] T029 [P] [US1] Migrate core best-practices guide pages to MDX in src/content/guide/buenas-practicas/
-- [ ] T030 [P] [US1] Migrate language and framework guide pages to MDX in src/content/guide/buenas-practicas-en/
-- [ ] T031 [P] [US1] Migrate algorithms and data structures guide pages to MDX in src/content/guide/algoritmos-y-estructuras-de-datos/
-- [ ] T032 [P] [US1] Migrate architecture, systems, database, tooling, and FAQ guide pages to MDX in src/content/guide/
-- [ ] T033 [US1] Implement deterministic sidebar grouping, ordering, and active-state support in src/utils/guide.ts
-- [ ] T034 [US1] Implement desktop and mobile sidebar rendering in src/components/Sidebar.astro
-- [ ] T035 [US1] Integrate sidebar, theme toggle slot, and content shell in src/layouts/DocsLayout.astro
-- [ ] T036 [US1] Render collection entries through the dynamic route in src/pages/guia/[...slug].astro
-- [ ] T037 [US1] Connect the home page to the first guide section in src/pages/index.astro
-- [ ] T038 [US1] Verify US1 with npm run build and npm run test:e2e -- tests/e2e/sidebar-navigation.spec.ts
+- [x] T029 [P] [US1] Migrate core best-practices guide pages to MDX in src/content/guide/buenas-practicas/
+- [x] T030 [P] [US1] Migrate language and framework guide pages to MDX in src/content/guide/buenas-practicas-en/
+- [x] T031 [P] [US1] Migrate algorithms and data structures guide pages to MDX in src/content/guide/algoritmos-y-estructuras-de-datos/
+- [x] T032 [P] [US1] Migrate architecture, systems, database, tooling, and FAQ guide pages to MDX in src/content/guide/
+- [x] T033 [US1] Implement deterministic sidebar grouping, ordering, and active-state support in src/utils/guide.ts
+- [x] T034 [US1] Implement desktop and mobile sidebar rendering in src/components/Sidebar.astro
+- [x] T035 [US1] Integrate sidebar, theme toggle slot, and content shell in src/layouts/DocsLayout.astro
+- [x] T036 [US1] Render collection entries through the dynamic route in src/pages/guia/[...slug].astro
+- [x] T037 [US1] Connect the home page to the first guide section in src/pages/index.astro
+- [x] T038 [US1] Verify US1 with npm run build and npm run test:e2e -- tests/e2e/sidebar-navigation.spec.ts
 
 **Checkpoint**: User Story 1 is independently functional as the MVP.
 
@@ -94,19 +94,19 @@
 
 ### Tests and Verification for User Story 2
 
-- [ ] T039 [P] [US2] Add automated README-to-content reference parity test in tests/unit/reference-parity.test.ts
-- [ ] T040 [P] [US2] Add browser test for visible references on section pages in tests/e2e/section-references.spec.ts
-- [ ] T041 [P] [US2] Add link-check command coverage for MDX frontmatter references in scripts/check-reference-links.mjs
+- [x] T039 [P] [US2] Add automated README-to-content reference parity test in tests/unit/reference-parity.test.ts
+- [x] T040 [P] [US2] Add browser test for visible references on section pages in tests/e2e/section-references.spec.ts
+- [x] T041 [P] [US2] Add link-check command coverage for MDX frontmatter references in scripts/check-reference-links.mjs
 
 ### Implementation for User Story 2
 
-- [ ] T042 [P] [US2] Populate reference frontmatter for best-practices pages in src/content/guide/buenas-practicas/
-- [ ] T043 [P] [US2] Populate reference frontmatter for language and framework pages in src/content/guide/buenas-practicas-en/
-- [ ] T044 [P] [US2] Populate reference frontmatter for algorithms and data structure pages in src/content/guide/algoritmos-y-estructuras-de-datos/
-- [ ] T045 [P] [US2] Populate reference frontmatter for remaining guide pages in src/content/guide/
-- [ ] T046 [US2] Implement empty-safe reference rendering in src/components/ReferenceList.astro
-- [ ] T047 [US2] Render reference lists on guide pages in src/pages/guia/[...slug].astro
-- [ ] T048 [US2] Verify US2 with npm run verify:content and npm run check:links from package.json
+- [x] T042 [P] [US2] Populate reference frontmatter for best-practices pages in src/content/guide/buenas-practicas/
+- [x] T043 [P] [US2] Populate reference frontmatter for language and framework pages in src/content/guide/buenas-practicas-en/
+- [x] T044 [P] [US2] Populate reference frontmatter for algorithms and data structure pages in src/content/guide/algoritmos-y-estructuras-de-datos/
+- [x] T045 [P] [US2] Populate reference frontmatter for remaining guide pages in src/content/guide/
+- [x] T046 [US2] Implement empty-safe reference rendering in src/components/ReferenceList.astro
+- [x] T047 [US2] Render reference lists on guide pages in src/pages/guia/[...slug].astro
+- [x] T048 [US2] Verify US2 with npm run verify:content and npm run check:links from package.json
 
 **Checkpoint**: User Stories 1 and 2 both work independently.
 
@@ -120,17 +120,17 @@
 
 ### Tests and Verification for User Story 3
 
-- [ ] T049 [P] [US3] Add unit test for optional examples metadata validation in tests/unit/content-schema.test.ts
-- [ ] T050 [P] [US3] Add browser test for example rendering and absent-example behavior in tests/e2e/code-examples.spec.ts
-- [ ] T051 [P] [US3] Add browser test for Shiki-highlighted code blocks in tests/e2e/syntax-highlighting.spec.ts
+- [x] T049 [P] [US3] Add unit test for optional examples metadata validation in tests/unit/content-schema.test.ts
+- [x] T050 [P] [US3] Add browser test for example rendering and absent-example behavior in tests/e2e/code-examples.spec.ts
+- [x] T051 [P] [US3] Add browser test for Shiki-highlighted code blocks in tests/e2e/syntax-highlighting.spec.ts
 
 ### Implementation for User Story 3
 
-- [ ] T052 [P] [US3] Implement example rendering states in src/components/CodeExample.astro
-- [ ] T053 [P] [US3] Add MDX component usage documentation in src/content/guide/buenas-practicas/solid-principles.mdx
-- [ ] T054 [US3] Integrate example rendering support into guide pages in src/pages/guia/[...slug].astro
-- [ ] T055 [US3] Add one non-placeholder sample example to a migrated guide page in src/content/guide/buenas-practicas/solid-principles.mdx
-- [ ] T056 [US3] Verify US3 with npm run build and npm run test:e2e -- tests/e2e/code-examples.spec.ts
+- [x] T052 [P] [US3] Implement example rendering states in src/components/CodeExample.astro
+- [x] T053 [P] [US3] Add MDX component usage documentation in src/content/guide/buenas-practicas/solid-principles.mdx
+- [x] T054 [US3] Integrate example rendering support into guide pages in src/pages/guia/[...slug].astro
+- [x] T055 [US3] Add one non-placeholder sample example to a migrated guide page in src/content/guide/buenas-practicas/solid-principles.mdx
+- [x] T056 [US3] Verify US3 with npm run build and npm run test:e2e -- tests/e2e/code-examples.spec.ts
 
 **Checkpoint**: All user stories are independently functional.
 
@@ -140,14 +140,14 @@
 
 **Purpose**: Final quality gates, accessibility, SEO, performance, and documentation updates across the whole site.
 
-- [ ] T057 [P] Add page-specific title and description assertions in tests/e2e/seo-metadata.spec.ts
-- [ ] T058 [P] Add dark/light persistence browser test in tests/e2e/theme-toggle.spec.ts
-- [ ] T059 [P] Add accessibility-focused checks for navigation controls and focus states in tests/e2e/accessibility.spec.ts
-- [ ] T060 [P] Add performance timing smoke check for initial content and sidebar interaction in tests/e2e/performance.spec.ts
-- [ ] T061 [P] Update README.md with website development commands and content-authoring guidance
-- [ ] T062 Run full validation from quickstart.md with npm install, npm run build, npm run test, npm run test:e2e, npm run verify:content, and npm run check:links
-- [ ] T063 Review migrated content for Spanish-first terminology, heading hierarchy, and readable labels in src/content/guide/
-- [ ] T064 Review dependency choices, package-lock.json, and example content for security and unsafe-practice risks
+- [x] T057 [P] Add page-specific title and description assertions in tests/e2e/seo-metadata.spec.ts
+- [x] T058 [P] Add dark/light persistence browser test in tests/e2e/theme-toggle.spec.ts
+- [x] T059 [P] Add accessibility-focused checks for navigation controls and focus states in tests/e2e/accessibility.spec.ts
+- [x] T060 [P] Add performance timing smoke check for initial content and sidebar interaction in tests/e2e/performance.spec.ts
+- [x] T061 [P] Update README.md with website development commands and content-authoring guidance
+- [x] T062 Run full validation from quickstart.md with npm install, npm run build, npm run test, npm run test:e2e, npm run verify:content, and npm run check:links
+- [x] T063 Review migrated content for Spanish-first terminology, heading hierarchy, and readable labels in src/content/guide/
+- [x] T064 Review dependency choices, package-lock.json, and example content for security and unsafe-practice risks
 
 ---
 

@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
 
 const referenceSchema = z.object({
   label: z.string().min(1),
@@ -14,7 +15,7 @@ const exampleSchema = z.object({
 });
 
 const guide = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/guide" }),
   schema: z.object({
     title: z.string().min(1),
     description: z.string().min(1).max(180),

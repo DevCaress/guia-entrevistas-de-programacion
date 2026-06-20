@@ -2,14 +2,16 @@
 type Props = {
   title?: string;
   description?: string;
+  language?: string;
 };
 
-const { title, description } = Astro.props;
+const { title, description, language } = Astro.props;
 ---
 
 <section class="code-example">
   {title && <h3>{title}</h3>}
   {description && <p>{description}</p>}
+  {language && <span class="language">{language}</span>}
   <slot />
 </section>
 
@@ -24,5 +26,13 @@ const { title, description } = Astro.props;
 
   .code-example h3 {
     margin-top: 0;
+  }
+
+  .language {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    color: var(--muted-fg);
+    font-size: 0.8rem;
+    text-transform: uppercase;
   }
 </style>

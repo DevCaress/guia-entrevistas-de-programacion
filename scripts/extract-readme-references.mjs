@@ -10,7 +10,6 @@ export async function extractReadmeReferences(readmePath = "README.md") {
     if (heading) {
       current = heading[2].replace(/\s+\{#.+\}$/, "").trim();
       if (!sections.has(current)) sections.set(current, []);
-      continue;
     }
 
     const linkPattern = /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g;
