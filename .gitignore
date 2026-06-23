@@ -9,3 +9,6 @@ playwright-report/
 test-results/
 .DS_Store
 *.log
+.agents
+.specify
+specs
