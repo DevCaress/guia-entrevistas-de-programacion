@@ -1,0 +1,133 @@
+---
+import { isActivePath, type SidebarGroup } from "../utils/guide";
+
+type Props = {
+  groups: SidebarGroup[];
+  currentPath: string;
+};
+
+const { groups, currentPath } = Astro.props;
+---
+
+<button class="sidebar-toggle" type="button" aria-controls="guide-sidebar" aria-expanded="false" data-sidebar-toggle>
+  Menu
+</button>
+<aside class="sidebar" id="guide-sidebar" data-sidebar>
+  <a class="brand" href="/">Guia de entrevistas</a>
+  <nav aria-label="Secciones de la guia">
+    {groups.map((group) => (
+      <section class="sidebar-group">
+        <h2>{group.category}</h2>
+        <ul>
+          {group.items.map((item) => {
+            const active = isActivePath(currentPath, item.href);
+            return (
+              <li>
+                <a href={item.href} aria-current={active ? "page" : undefined} data-sidebar-link>
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    ))}
+  </nav>
+</aside>
+
+<script>
+  const toggle = document.querySelector("[data-sidebar-toggle]");
+  const sidebar = document.querySelector("[data-sidebar]");
+  const links = document.querySelectorAll("[data-sidebar-link]");
+
+  function setOpen(open: boolean) {
+    sidebar?.toggleAttribute("data-open", open);
+    toggle?.setAttribute("aria-expanded", String(open));
+  }
+
+  toggle?.addEventListener("click", () => setOpen(!sidebar?.hasAttribute("data-open")));
+  links.forEach((link) => link.addEventListener("click", () => setOpen(false)));
+</script>
+
+<style>
+  .sidebar-toggle {
+    display: none;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    border-right: 1px solid var(--border);
+    background: var(--panel-bg);
+    padding: 1.25rem;
+  }
+
+  .brand {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: var(--page-fg);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .sidebar-group + .sidebar-group {
+    margin-top: 1.4rem;
+  }
+
+  .sidebar h2 {
+    margin: 0 0 0.5rem;
+    color: var(--muted-fg);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+
+  .sidebar ul {
+    display: grid;
+    gap: 0.2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .sidebar a {
+    display: block;
+    border-radius: 0.45rem;
+    padding: 0.45rem 0.6rem;
+    color: var(--muted-fg);
+    overflow-wrap: anywhere;
+    text-decoration: none;
+  }
+
+  .sidebar a[aria-current="page"] {
+    background: color-mix(in srgb, var(--accent) 18%, transparent);
+    color: var(--page-fg);
+  }
+
+  @media (max-width: 860px) {
+    .sidebar-toggle {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.5rem;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      background: var(--panel-bg);
+      color: var(--page-fg);
+      padding: 0 0.85rem;
+    }
+
+    .sidebar {
+      position: fixed;
+      z-index: 20;
+      inset: 4rem auto 0 0;
+      width: min(22rem, 86vw);
+      transform: translateX(-105%);
+      transition: transform 160ms ease;
+    }
+
+    .sidebar[data-open] {
+      transform: translateX(0);
+    }
+  }
+</style>

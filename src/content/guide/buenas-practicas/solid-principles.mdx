@@ -1,0 +1,55 @@
+---
+title: "Principios SOLID"
+description: "Resumen de los principios SOLID y recursos para aplicarlos en entrevistas tecnicas."
+category: "Buenas practicas"
+section: "Principios"
+sidebar:
+  label: "Principios SOLID"
+  order: 10
+examples:
+  - title: "Single Responsibility Principle"
+    description: "Separar responsabilidades evita que una clase tenga multiples razones de cambio."
+    language: "ts"
+references:
+  - label: "SOLID en C++ con implemetación y ejemplos - Inglés"
+    url: "https://medium.com/@aleksandra_shershen/solid-principles-implementation-and-examples-in-c-99f0d7e3e868"
+  - label: "SOLID en C++ - Inglés"
+    url: "https://nexwebsites.com/blog/solid-design-principles/"
+  - label: "SOLID en Java con Ejemplos - Inglés"
+    url: "https://www.javaguides.net/2020/01/solid-principles-in-java-with-examples.html"
+  - label: "SOLID en Java - Inglés"
+    url: "https://medium.com/@shavi22/solid-principles-in-java-cf9f5b167600"
+  - label: "SOLID en Javascript Vanilla - Inglés"
+    url: "https://github.com/ryanmcdermott/clean-code-javascript#openclosed-principle-ocp"
+  - label: "SOLID en Python - Inglés"
+    url: "https://realpython.com/solid-principles-python/"
+  - label: "SOLID en React.JS - Inglés"
+    url: "https://medium.com/docler-engineering/applying-solid-to-react-ca6d1ff926a4"
+  - label: "SOLID en Vue.JS - Inglés"
+    url: "https://medium.com/@moein.mirkiani/solid-principles-in-vue-29ecc988f968"
+---
+
+Esta seccion reune recursos y criterios de estudio sobre Principios SOLID. Usa las referencias para profundizar y agrega ejemplos propios conforme avance la guia.
+
+## Ejemplo aplicado
+
+Este ejemplo separa el calculo del reporte de su salida. En una entrevista, esa separacion ayuda a explicar una unica razon de cambio por clase.
+
+```ts
+type Order = {
+  total: number;
+  taxes: number;
+};
+
+class InvoiceCalculator {
+  total(order: Order) {
+    return order.total + order.taxes;
+  }
+}
+
+class InvoicePrinter {
+  print(amount: number) {
+    return `Total: ${amount}`;
+  }
+}
+```

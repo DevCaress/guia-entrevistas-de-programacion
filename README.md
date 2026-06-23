@@ -1,5 +1,34 @@
 # Guía para entrevistas técnicas como Ingeniero de software
 
+## Sitio web navegable
+
+Esta guia ahora se publica como un sitio estatico de Astro. El README conserva el indice historico, mientras que el contenido navegable vive en `src/content/guide/**/*.mdx`.
+
+### Desarrollo local
+
+Usa Node.js `>=22.12.0`.
+
+```bash
+npm install
+npm run dev
+```
+
+### Validacion
+
+```bash
+npm run build
+npm run test
+npm run test:e2e
+npm run verify:content
+npm run check:links
+```
+
+`npm run verify:content` compara secciones y referencias del README contra los archivos MDX migrados. `npm run check:links` valida sintaxis de URLs; para verificar disponibilidad externa con red, ejecuta `npm run check:links -- --fetch`.
+
+### Agregar contenido
+
+Cada seccion nueva debe agregarse como `.mdx` en `src/content/guide/` con `title`, `description`, `category`, `sidebar.order` y `references`. Las referencias originales van en frontmatter y los ejemplos propios pueden agregarse con `examples` o como bloques de codigo MDX dentro del contenido.
+
 ## Índice
 
 - [Guía para entrevistas técnicas como Ingeniero de software](#guía-para-entrevistas-técnicas-como-ingeniero-de-software)

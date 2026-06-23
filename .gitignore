@@ -1,0 +1,14 @@
+.worktrees/
+node_modules/
+dist/
+.astro/
+.vercel/
+.netlify/
+coverage/
+playwright-report/
+test-results/
+.DS_Store
+*.log
+.agents
+.specify
+specs

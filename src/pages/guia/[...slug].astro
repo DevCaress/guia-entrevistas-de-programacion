@@ -1,0 +1,42 @@
+---
+import { getCollection, render } from "astro:content";
+import CodeExample from "../../components/CodeExample.astro";
+import ReferenceList from "../../components/ReferenceList.astro";
+import DocsLayout from "../../layouts/DocsLayout.astro";
+import { buildPageMeta } from "../../utils/seo";
+import { entrySlug, groupGuideEntries } from "../../utils/guide";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("guide");
+  return entries.map((entry) => ({
+    params: { slug: entrySlug(entry) },
+    props: { entry, entries }
+  }));
+}
+
+const { entry, entries } = Astro.props;
+const { Content } = await render(entry);
+const meta = buildPageMeta({
+  title: entry.data.title,
+  description: entry.data.description,
+  slug: entrySlug(entry)
+});
+const groups = groupGuideEntries(entries);
+---
+
+<DocsLayout title={meta.title} description={meta.description} canonicalPath={meta.canonicalPath} groups={groups}>
+  <article class="prose">
+    <h1>{entry.data.title}</h1>
+    <p>{entry.data.description}</p>
+    <Content />
+    {entry.data.examples && entry.data.examples.length > 0 && (
+      <section aria-labelledby="examples-title">
+        <h2 id="examples-title">Ejemplos</h2>
+        {entry.data.examples.map((example) => (
+          <CodeExample title={example.title} description={example.description} language={example.language} />
+        ))}
+      </section>
+    )}
+    <ReferenceList references={entry.data.references} />
+  </article>
+</DocsLayout>

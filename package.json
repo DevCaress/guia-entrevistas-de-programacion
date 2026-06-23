@@ -1,0 +1,33 @@
+{
+  "name": "guia-entrevistas-de-programacion",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro check && ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "verify:content": "node scripts/verify-content-migration.mjs",
+    "check:links": "node scripts/check-reference-links.mjs",
+    "format": "prettier --check ."
+  },
+  "dependencies": {
+    "@astrojs/mdx": "latest",
+    "@tailwindcss/vite": "^4.1.17",
+    "astro": "6.4.8",
+    "tailwindcss": "^4.1.17"
+  },
+  "devDependencies": {
+    "@astrojs/check": "latest",
+    "@playwright/test": "latest",
+    "@types/node": "^26.0.0",
+    "prettier": "latest",
+    "typescript": "latest",
+    "vitest": "latest"
+  }
+}

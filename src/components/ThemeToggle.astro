@@ -1,0 +1,38 @@
+<button class="theme-toggle" type="button" aria-label="Cambiar tema" data-theme-toggle>
+  <span aria-hidden="true" data-theme-icon>☾</span>
+</button>
+
+<script>
+  const STORAGE_KEY = "guide-theme";
+  const root = document.documentElement;
+  const button = document.querySelector("[data-theme-toggle]");
+  const icon = document.querySelector("[data-theme-icon]");
+
+  function applyTheme(theme: string) {
+    const nextTheme = theme === "light" ? "light" : "dark";
+    root.dataset.theme = nextTheme;
+    if (icon) icon.textContent = nextTheme === "dark" ? "☾" : "☀";
+  }
+
+  button?.addEventListener("click", () => {
+    const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+    localStorage.setItem(STORAGE_KEY, nextTheme);
+    applyTheme(nextTheme);
+  });
+
+  applyTheme(localStorage.getItem(STORAGE_KEY) ?? "dark");
+</script>
+
+<style>
+  .theme-toggle {
+    display: inline-grid;
+    width: 2.5rem;
+    height: 2.5rem;
+    place-items: center;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    background: var(--panel-bg);
+    color: var(--page-fg);
+    cursor: pointer;
+  }
+</style>
