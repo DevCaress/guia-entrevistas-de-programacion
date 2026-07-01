@@ -1,0 +1,123 @@
+---
+title: "Diferencias entre call, apply y bind"
+description: "Como call, apply y bind controlan el valor de this y los argumentos al invocar funciones en JavaScript."
+category: "Preguntas frecuentes"
+section: "JavaScript"
+sidebar:
+  label: "call / apply / bind"
+  order: 614
+references:
+  - label: "MDN — Function.prototype.call"
+    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call"
+  - label: "MDN — Function.prototype.apply"
+    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply"
+  - label: "MDN — Function.prototype.bind"
+    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind"
+---
+
+import CodeExample from '../../../../components/CodeExample.astro';
+
+Las tres son metodos de `Function.prototype` que sirven para controlar de forma explicita el valor de `this` cuando invocas una funcion. La diferencia esta en **cuando se ejecuta** la funcion y **como se pasan los argumentos**.
+
+## Tabla comparativa
+
+<table class="w-full border-collapse text-left text-sm">
+  <thead>
+    <tr class="border-b border-[var(--border)] bg-[var(--panel-bg)]">
+      <th class="px-3 py-2 font-semibold">Metodo</th>
+      <th class="px-3 py-2 font-semibold">¿Ejecuta?</th>
+      <th class="px-3 py-2 font-semibold">Argumentos</th>
+      <th class="px-3 py-2 font-semibold">Devuelve</th>
+    </tr>
+  </thead>
+  <tbody class="text-[var(--muted-fg)]">
+    <tr class="border-b border-[var(--border)] align-top">
+      <td class="px-3 py-2 text-[var(--page-fg)] font-medium">call</td>
+      <td class="px-3 py-2">Si, inmediatamente</td>
+      <td class="px-3 py-2">Lista separada por comas</td>
+      <td class="px-3 py-2">Resultado de la funcion</td>
+    </tr>
+    <tr class="border-b border-[var(--border)] align-top">
+      <td class="px-3 py-2 text-[var(--page-fg)] font-medium">apply</td>
+      <td class="px-3 py-2">Si, inmediatamente</td>
+      <td class="px-3 py-2">Array unico</td>
+      <td class="px-3 py-2">Resultado de la funcion</td>
+    </tr>
+    <tr class="border-b border-[var(--border)] align-top">
+      <td class="px-3 py-2 text-[var(--page-fg)] font-medium">bind</td>
+      <td class="px-3 py-2">No, devuelve nueva funcion</td>
+      <td class="px-3 py-2">Lista separada por comas (parciales)</td>
+      <td class="px-3 py-2">Funcion con this y args fijados</td>
+    </tr>
+  </tbody>
+</table>
+
+## Mismo ejemplo, tres formas
+
+<CodeExample title="Mismo this, distintas invocaciones" language="javascript">
+
+```js
+function presentar(saludo, signo) {
+  return `${saludo}, soy ${this.nombre}${signo}`;
+}
+
+const ada = { nombre: 'Ada' };
+
+presentar.call(ada, 'Hola', '!');         // 'Hola, soy Ada!'
+presentar.apply(ada, ['Hola', '!']);      // 'Hola, soy Ada!'
+
+const presentarseAda = presentar.bind(ada, 'Hola');
+presentarseAda('!');                      // 'Hola, soy Ada!'
+```
+
+</CodeExample>
+
+## Cuando usar cada uno
+
+- **`call`**: cuando tienes los argumentos uno a uno y quieres ejecutar la funcion en el acto. Util para invocar metodos con un `this` distinto sin crear una nueva funcion.
+- **`apply`**: cuando los argumentos ya estan en un array. Antes era util para hacer spreading; hoy el operador `...` lo cubre mejor en la mayoria de casos.
+- **`bind`**: cuando necesitas **guardar** una funcion lista para llamarse despues con un `this` fijo, por ejemplo un callback o un event handler. Tambien sirve para aplicacion parcial de argumentos.
+
+## Caso practico: tomar prestados metodos
+
+`Array.prototype.slice` es el truco clasico para convertir objetos array-like (como `arguments` o un `NodeList` antiguo) en arrays reales.
+
+<CodeExample title="Method borrowing" language="javascript">
+
+```js
+function listar() {
+  return Array.prototype.slice.call(arguments);
+}
+
+listar(1, 2, 3); // [1, 2, 3]
+```
+
+</CodeExample>
+
+## Caso practico: event handler con `bind`
+
+<CodeExample title="bind para handlers" language="javascript">
+
+```js
+class Contador {
+  constructor() {
+    this.valor = 0;
+    this.incrementar = this.incrementar.bind(this);
+  }
+
+  incrementar() {
+    this.valor += 1;
+  }
+}
+
+const c = new Contador();
+boton.addEventListener('click', c.incrementar); // this seguira siendo c
+```
+
+</CodeExample>
+
+## Resumen
+
+- `call` y `apply` **invocan** la funcion; `bind` solo **crea** una nueva.
+- `call` recibe argumentos sueltos; `apply` recibe un array.
+- En codigo moderno, `bind` sigue siendo el mas comun: los arrow functions o el operador spread suelen reemplazar a `call` / `apply`.

@@ -13,6 +13,12 @@ type Props = {
 
 const { title, description, canonicalPath, groups } = Astro.props;
 const currentPath = Astro.url.pathname;
+
+const pathParts = currentPath.replace(/\/$/, "").split("/");
+const parentPath = pathParts.length >= 5 ? pathParts.slice(0, -1).join("/") : null;
+const parentItem = parentPath
+  ? groups.flatMap((g) => g.items).find((item) => item.href.replace(/\/$/, "") === parentPath)
+  : null;
 ---
 
 <!doctype html>
@@ -20,6 +26,7 @@ const currentPath = Astro.url.pathname;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="description" content={description} />
     {canonicalPath && <link rel="canonical" href={new URL(canonicalPath, Astro.site ?? Astro.url).toString()} />}
     <title>{title}</title>
@@ -39,6 +46,11 @@ const currentPath = Astro.url.pathname;
           <ThemeToggle />
         </header>
         <main class="docs-content">
+          {parentItem && (
+            <p class="back-link">
+              <a href={parentItem.href}>&larr; Volver a {parentItem.label}</a>
+            </p>
+          )}
           <slot />
         </main>
       </div>
@@ -72,6 +84,21 @@ const currentPath = Astro.url.pathname;
   .docs-content {
     width: min(100%, 56rem);
     padding: 2rem clamp(1rem, 4vw, 3rem) 5rem;
+  }
+
+  .back-link {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .back-link a {
+    color: var(--muted-fg);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  .back-link a:hover {
+    text-decoration: underline;
   }
 
   @media (max-width: 860px) {

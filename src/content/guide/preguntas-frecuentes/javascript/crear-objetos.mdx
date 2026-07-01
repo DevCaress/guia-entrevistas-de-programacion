@@ -1,0 +1,167 @@
+---
+title: "¿Cuáles son las formas posibles de crear objetos en JavaScript?"
+description: "Repaso de las distintas maneras de crear objetos en JavaScript: literales, constructores, Object.create, clases, factories y singleton."
+category: "Preguntas frecuentes"
+section: "JavaScript"
+sidebar:
+  label: "Crear objetos"
+  order: 612
+references:
+  - label: "MDN — Working with objects"
+    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_objects"
+  - label: "MDN — Object.create()"
+    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create"
+  - label: "MDN — Classes"
+    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes"
+---
+
+import CodeExample from '../../../../components/CodeExample.astro';
+
+JavaScript permite crear objetos de varias maneras. Cada forma sirve a un caso de uso distinto: literales para datos puntuales, clases o constructores cuando necesitas instanciar varios objetos similares, y `Object.create` cuando quieres controlar el prototipo de forma explicita.
+
+## 1. Object literal
+
+La forma mas directa y comun. Util para configuraciones, parametros y estructuras puntuales.
+
+<CodeExample title="Object literal" language="javascript">
+
+```js
+const usuario = {
+  nombre: 'Ada',
+  edad: 36,
+  saludar() {
+    return `Hola, soy ${this.nombre}`;
+  },
+};
+```
+
+</CodeExample>
+
+## 2. Constructor `Object` o `new Object()`
+
+Equivalente al literal pero usando el constructor global. Rara vez se usa hoy en dia.
+
+<CodeExample title="new Object()" language="javascript">
+
+```js
+const usuario = new Object();
+usuario.nombre = 'Ada';
+usuario.edad = 36;
+```
+
+</CodeExample>
+
+## 3. Funcion constructora
+
+Antes de las clases ES6, era la manera estandar de crear "tipos" de objetos. Aun se ve en codigo legacy y librerias antiguas.
+
+<CodeExample title="Constructor function" language="javascript">
+
+```js
+function Usuario(nombre, edad) {
+  this.nombre = nombre;
+  this.edad = edad;
+}
+
+Usuario.prototype.saludar = function () {
+  return `Hola, soy ${this.nombre}`;
+};
+
+const ada = new Usuario('Ada', 36);
+```
+
+</CodeExample>
+
+## 4. `Object.create`
+
+Crea un objeto cuyo prototipo es el que tu indiques. Es la manera mas explicita de trabajar con herencia prototipal pura.
+
+<CodeExample title="Object.create" language="javascript">
+
+```js
+const base = {
+  saludar() {
+    return `Hola, soy ${this.nombre}`;
+  },
+};
+
+const ada = Object.create(base);
+ada.nombre = 'Ada';
+
+ada.saludar(); // 'Hola, soy Ada'
+```
+
+</CodeExample>
+
+## 5. Clase ES6
+
+Azucar sintactico sobre las funciones constructoras. Es la forma idiomatica en codigo moderno.
+
+<CodeExample title="ES6 class" language="javascript">
+
+```js
+class Usuario {
+  constructor(nombre, edad) {
+    this.nombre = nombre;
+    this.edad = edad;
+  }
+
+  saludar() {
+    return `Hola, soy ${this.nombre}`;
+  }
+}
+
+const ada = new Usuario('Ada', 36);
+```
+
+</CodeExample>
+
+## 6. Factory function
+
+Una funcion comun que devuelve un objeto. No necesita `new` y permite encapsular variables privadas mediante closures.
+
+<CodeExample title="Factory function" language="javascript">
+
+```js
+function crearUsuario(nombre, edad) {
+  return {
+    nombre,
+    edad,
+    saludar() {
+      return `Hola, soy ${nombre}`;
+    },
+  };
+}
+
+const ada = crearUsuario('Ada', 36);
+```
+
+</CodeExample>
+
+## 7. Singleton via IIFE
+
+Cuando solo necesitas una unica instancia, una IIFE permite encapsular estado privado y exponer un API publico.
+
+<CodeExample title="Singleton" language="javascript">
+
+```js
+const configuracion = (function () {
+  let idioma = 'es';
+
+  return {
+    getIdioma: () => idioma,
+    setIdioma: (nuevo) => {
+      idioma = nuevo;
+    },
+  };
+})();
+```
+
+</CodeExample>
+
+## Resumen
+
+- Para datos puntuales: **object literal**.
+- Para multiples instancias con misma forma: **clase** (preferida hoy) o **funcion constructora**.
+- Para herencia explicita por prototipo: **`Object.create`**.
+- Para encapsular estado privado sin `new`: **factory function** o **singleton/IIFE**.

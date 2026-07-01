@@ -8,31 +8,9 @@ type Props = {
 const { title, description, language } = Astro.props;
 ---
 
-<section class="code-example">
-  {title && <h3>{title}</h3>}
+<section class="my-6 border border-[--border] rounded-lg p-4 bg-[--panel-bg] [&_pre]:!bg-[var(--code-bg)] [&_pre]:!text-[var(--page-fg)] [&_pre]:border [&_pre]:border-[var(--border)] [&_pre]:rounded-lg [&_pre]:p-4 [&_pre]:overflow-x-auto">
+  {title && <h3 class="mt-0">{title}</h3>}
   {description && <p>{description}</p>}
-  {language && <span class="language">{language}</span>}
+  {language && <span class="inline-block mb-3 text-[--muted-fg] text-[0.8rem] uppercase">{language}</span>}
   <slot />
 </section>
-
-<style>
-  .code-example {
-    margin: 1.5rem 0;
-    border: 1px solid var(--border);
-    border-radius: 0.5rem;
-    padding: 1rem;
-    background: color-mix(in srgb, var(--panel-bg) 82%, transparent);
-  }
-
-  .code-example h3 {
-    margin-top: 0;
-  }
-
-  .language {
-    display: inline-block;
-    margin-bottom: 0.75rem;
-    color: var(--muted-fg);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-  }
-</style>

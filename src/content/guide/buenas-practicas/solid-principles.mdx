@@ -6,10 +6,6 @@ section: "Principios"
 sidebar:
   label: "Principios SOLID"
   order: 10
-examples:
-  - title: "Single Responsibility Principle"
-    description: "Separar responsabilidades evita que una clase tenga multiples razones de cambio."
-    language: "ts"
 references:
   - label: "SOLID en C++ con implemetación y ejemplos - Inglés"
     url: "https://medium.com/@aleksandra_shershen/solid-principles-implementation-and-examples-in-c-99f0d7e3e868"
@@ -29,27 +25,283 @@ references:
     url: "https://medium.com/@moein.mirkiani/solid-principles-in-vue-29ecc988f968"
 ---
 
-Esta seccion reune recursos y criterios de estudio sobre Principios SOLID. Usa las referencias para profundizar y agrega ejemplos propios conforme avance la guia.
+**SOLID** es un acrónimo que agrupa cinco principios de diseño orientado a objetos formulados por Robert C. Martin. Aplicarlos produce código más fácil de extender, probar y mantener. En una entrevista técnica, mencionar y ejemplificar estos principios demuestra criterio de diseño más allá de que el código "funcione".
 
-## Ejemplo aplicado
+---
 
-Este ejemplo separa el calculo del reporte de su salida. En una entrevista, esa separacion ayuda a explicar una unica razon de cambio por clase.
+## S — Single Responsibility Principle (SRP)
 
-```ts
-type Order = {
-  total: number;
-  taxes: number;
-};
+Una clase o módulo debe tener **una sola razón para cambiar**. Si una clase maneja lógica de negocio y también decide cómo mostrar o persistir datos, cualquier cambio en la presentación obliga a tocar código de negocio y viceversa.
 
-class InvoiceCalculator {
-  total(order: Order) {
-    return order.total + order.taxes;
+### Violación del principio
+
+```js
+class Invoice {
+  constructor(order) {
+    this.order = order;
+  }
+
+  calculateTotal() {
+    return this.order.subtotal + this.order.taxes;
+  }
+
+  printInvoice() {
+    console.log(`Total: $${this.calculateTotal()}`);
+  }
+
+  saveToDatabase() {
+    db.save(this.order);
+  }
+}
+```
+
+`Invoice` tiene tres razones para cambiar: la regla del total, el formato de impresión y el mecanismo de persistencia.
+
+### Aplicando SRP
+
+```js
+class Invoice {
+  constructor(order) {
+    this.order = order;
+  }
+
+  calculateTotal() {
+    return this.order.subtotal + this.order.taxes;
   }
 }
 
 class InvoicePrinter {
-  print(amount: number) {
-    return `Total: ${amount}`;
+  print(invoice) {
+    console.log(`Total: $${invoice.calculateTotal()}`);
+  }
+}
+
+class InvoiceRepository {
+  save(order) {
+    db.save(order);
   }
 }
 ```
+
+Cada clase tiene una única responsabilidad y puede evolucionar de forma independiente.
+
+---
+
+## O — Open/Closed Principle (OCP)
+
+Las entidades de software deben estar **abiertas para extensión pero cerradas para modificación**. Agregar comportamiento nuevo no debería requerir editar código que ya funciona y está probado.
+
+### Violación del principio
+
+```js
+class DiscountCalculator {
+  calculate(customer, total) {
+    if (customer.type === "regular") return total * 0.05;
+    if (customer.type === "vip") return total * 0.15;
+    // every new type forces editing this function
+    return 0;
+  }
+}
+```
+
+### Aplicando OCP
+
+```js
+class RegularDiscount {
+  calculate(total) { return total * 0.05; }
+}
+
+class VipDiscount {
+  calculate(total) { return total * 0.15; }
+}
+
+class StudentDiscount {
+  calculate(total) { return total * 0.10; }
+}
+
+class DiscountCalculator {
+  constructor(strategy) {
+    this.strategy = strategy;
+  }
+
+  calculate(total) {
+    return this.strategy.calculate(total);
+  }
+}
+```
+
+Nuevos tipos de descuento se agregan creando clases nuevas sin tocar `DiscountCalculator`.
+
+---
+
+## L — Liskov Substitution Principle (LSP)
+
+Los objetos de una subclase deben poder **sustituir** a los de su superclase sin alterar el comportamiento esperado del programa. Violar LSP suele indicar que la herencia se está usando para reutilizar código en lugar de modelar una relación "es-un".
+
+### Violación del principio
+
+```js
+class Bird {
+  fly() {
+    return "flying...";
+  }
+}
+
+class Penguin extends Bird {
+  fly() {
+    // penguins cannot fly — this breaks LSP
+    throw new Error("Penguins cannot fly");
+  }
+}
+
+function makeItFly(bird) {
+  // crashes if bird is a Penguin
+  console.log(bird.fly());
+}
+```
+
+### Aplicando LSP
+
+```js
+class Bird {
+  describe() {
+    return "I am a bird";
+  }
+}
+
+class FlyingBird extends Bird {
+  fly() {
+    return "flying...";
+  }
+}
+
+class Penguin extends Bird {
+  swim() {
+    return "swimming...";
+  }
+}
+
+function makeItFly(flyingBird) {
+  // guaranteed: any FlyingBird can fly
+  console.log(flyingBird.fly());
+}
+```
+
+La jerarquía refleja la realidad: no todo ave vuela, y el código lo respeta.
+
+---
+
+## I — Interface Segregation Principle (ISP)
+
+Los clientes no deben verse obligados a **depender de interfaces que no usan**. Una interfaz grande y genérica fuerza a las clases a implementar métodos que no necesitan.
+
+### Violación del principio
+
+```js
+class Printer {
+  print(doc) { throw new Error("not implemented"); }
+  scan(doc)  { throw new Error("not implemented"); }
+  fax(doc)   { throw new Error("not implemented"); }
+}
+
+class BasicPrinter extends Printer {
+  print(doc) {
+    console.log(`Printing: ${doc}`);
+  }
+  // forced to "implement" methods it does not support
+  scan() { throw new Error("no scanner"); }
+  fax()  { throw new Error("no fax"); }
+}
+```
+
+### Aplicando ISP
+
+```js
+class Printable {
+  print(doc) { console.log(`Printing: ${doc}`); }
+}
+
+class Scannable {
+  scan(doc) { console.log(`Scanning: ${doc}`); }
+}
+
+class Faxable {
+  fax(doc) { console.log(`Faxing: ${doc}`); }
+}
+
+class BasicPrinter extends Printable {}
+
+class AdvancedPrinter extends Printable {
+  constructor() {
+    super();
+    Object.assign(this, new Scannable(), new Faxable());
+  }
+}
+```
+
+Cada clase depende solo de las capacidades que realmente utiliza.
+
+---
+
+## D — Dependency Inversion Principle (DIP)
+
+Los módulos de alto nivel no deben depender de módulos de bajo nivel; ambos deben depender de **abstracciones**. Esto desacopla la lógica de negocio de los detalles de implementación (base de datos, red, sistema de archivos).
+
+### Violación del principio
+
+```js
+class MySQLDatabase {
+  save(data) {
+    console.log(`Saving to MySQL: ${JSON.stringify(data)}`);
+  }
+}
+
+class UserService {
+  constructor() {
+    // tightly coupled to MySQL
+    this.db = new MySQLDatabase();
+  }
+
+  register(user) {
+    this.db.save(user);
+  }
+}
+```
+
+Cambiar de MySQL a Postgres implica modificar `UserService`.
+
+### Aplicando DIP
+
+```js
+class Database {
+  save(data) { throw new Error("not implemented"); }
+}
+
+class MySQLDatabase extends Database {
+  save(data) {
+    console.log(`MySQL: ${JSON.stringify(data)}`);
+  }
+}
+
+class PostgresDatabase extends Database {
+  save(data) {
+    console.log(`Postgres: ${JSON.stringify(data)}`);
+  }
+}
+
+class UserService {
+  // depends on the abstraction, not a concrete engine
+  constructor(db) {
+    this.db = db;
+  }
+
+  register(user) {
+    this.db.save(user);
+  }
+}
+
+const service = new UserService(new PostgresDatabase());
+service.register({ name: "Ana" });
+```
+
+`UserService` no sabe ni le importa qué motor de base de datos se usa; se puede cambiar sin tocar la lógica de negocio.

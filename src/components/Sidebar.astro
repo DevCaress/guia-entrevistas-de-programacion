@@ -7,23 +7,62 @@ type Props = {
 };
 
 const { groups, currentPath } = Astro.props;
+const activeCategory = groups.find((group) =>
+  group.items.some((item) => isActivePath(currentPath, item.href))
+)?.category;
 ---
 
-<button class="sidebar-toggle" type="button" aria-controls="guide-sidebar" aria-expanded="false" data-sidebar-toggle>
+<button
+  type="button"
+  aria-controls="guide-sidebar"
+  aria-expanded="false"
+  data-sidebar-toggle
+  class="hidden max-[860px]:inline-flex items-center min-h-10 border border-[var(--border)] rounded-lg bg-[var(--panel-bg)] text-[var(--page-fg)] px-[0.85rem]"
+>
   Menu
 </button>
-<aside class="sidebar" id="guide-sidebar" data-sidebar>
-  <a class="brand" href="/">Guia de entrevistas</a>
+<aside
+  id="guide-sidebar"
+  data-sidebar
+  class="border-r border-[var(--border)] bg-[var(--panel-bg)] p-5 sticky top-0 h-screen overflow-y-auto max-[860px]:fixed max-[860px]:z-20 max-[860px]:top-16 max-[860px]:right-auto max-[860px]:bottom-0 max-[860px]:left-0 max-[860px]:w-[min(22rem,86vw)] max-[860px]:-translate-x-full max-[860px]:transition-transform max-[860px]:duration-150 max-[860px]:data-[open]:translate-x-0"
+>
+  <a class="inline-block mb-6 font-bold text-[var(--page-fg)] no-underline" href="/">Guia de entrevistas</a>
   <nav aria-label="Secciones de la guia">
-    {groups.map((group) => (
-      <section class="sidebar-group">
-        <h2>{group.category}</h2>
-        <ul>
+    {groups.map((group, groupIdx) => (
+      <section
+        data-sidebar-group
+        data-category={group.category}
+        data-active-category={group.category === activeCategory ? "true" : undefined}
+        class="grid grid-rows-[auto_1fr] transition-[grid-template-rows] duration-150 [&+&]:mt-[1.4rem] data-[collapsed]:grid-rows-[auto_0fr]"
+      >
+        <button
+          type="button"
+          aria-expanded="true"
+          aria-controls={`sidebar-group-${groupIdx}`}
+          data-sidebar-group-toggle
+          class="group flex w-full items-center justify-between gap-2 mb-2 p-0 bg-transparent border-0 text-[var(--muted-fg)] text-[0.8rem] uppercase text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--accent)] focus-visible:outline-offset-2 focus-visible:rounded-[0.25rem]"
+        >
+          <span>{group.category}</span>
+          <span
+            aria-hidden="true"
+            class="inline-block w-[0.55rem] h-[0.55rem] border-r-2 border-b-2 border-current rotate-[-135deg] transition-transform duration-150 group-aria-[expanded=false]:rotate-45"
+          ></span>
+        </button>
+        <ul
+          id={`sidebar-group-${groupIdx}`}
+          data-sidebar-group-list
+          class="flex flex-col gap-[0.2rem] min-h-0 overflow-hidden m-0 p-0 list-none"
+        >
           {group.items.map((item) => {
             const active = isActivePath(currentPath, item.href);
             return (
               <li>
-                <a href={item.href} aria-current={active ? "page" : undefined} data-sidebar-link>
+                <a
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  data-sidebar-link
+                  class="block rounded-[0.45rem] px-[0.6rem] py-[0.45rem] text-[var(--muted-fg)] break-words no-underline aria-[current=page]:bg-[color-mix(in_srgb,var(--accent)_18%,transparent)] aria-[current=page]:text-[var(--page-fg)]"
+                >
                   {item.label}
                 </a>
               </li>
@@ -36,98 +75,91 @@ const { groups, currentPath } = Astro.props;
 </aside>
 
 <script>
+  const STORAGE_KEY = "guide-sidebar-groups";
+
+  type CollapsedMap = Record<string, boolean>;
+
+  const readState = (): CollapsedMap => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return {};
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+        return parsed as CollapsedMap;
+      }
+    } catch {
+      // ignore corrupted entries
+    }
+    return {};
+  };
+
+  const writeState = (state: CollapsedMap) => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch {
+      // storage may be unavailable (private mode, quota); fail silently
+    }
+  };
+
+  const setGroupCollapsed = (group: HTMLElement, collapsed: boolean) => {
+    const toggle = group.querySelector<HTMLButtonElement>("[data-sidebar-group-toggle]");
+    group.toggleAttribute("data-collapsed", collapsed);
+    toggle?.setAttribute("aria-expanded", String(!collapsed));
+  };
+
+  const seedInitialState = (): CollapsedMap => {
+    const activeGroup = document.querySelector<HTMLElement>("[data-sidebar-group][data-active-category='true']");
+    const next: CollapsedMap = {};
+    document.querySelectorAll<HTMLElement>("[data-sidebar-group]").forEach((group) => {
+      const category = group.dataset.category;
+      if (!category) return;
+      next[category] = group !== activeGroup;
+    });
+    return next;
+  };
+
+  const applyState = (state: CollapsedMap) => {
+    document.querySelectorAll<HTMLElement>("[data-sidebar-group]").forEach((group) => {
+      const category = group.dataset.category;
+      if (!category) return;
+      const collapsed = state[category] ?? false;
+      setGroupCollapsed(group, collapsed);
+    });
+  };
+
   const toggle = document.querySelector("[data-sidebar-toggle]");
   const sidebar = document.querySelector("[data-sidebar]");
   const links = document.querySelectorAll("[data-sidebar-link]");
+  const groupToggles = document.querySelectorAll<HTMLButtonElement>("[data-sidebar-group-toggle]");
 
-  function setOpen(open: boolean) {
+  function setSidebarOpen(open: boolean) {
     sidebar?.toggleAttribute("data-open", open);
     toggle?.setAttribute("aria-expanded", String(open));
   }
 
-  toggle?.addEventListener("click", () => setOpen(!sidebar?.hasAttribute("data-open")));
-  links.forEach((link) => link.addEventListener("click", () => setOpen(false)));
+  const initGroupToggles = () => {
+    const stored = readState();
+    const isFirstVisit = Object.keys(stored).length === 0;
+    const state = isFirstVisit ? seedInitialState() : stored;
+    if (isFirstVisit) writeState(state);
+    applyState(state);
+
+    groupToggles.forEach((button) => {
+      button.addEventListener("click", () => {
+        const group = button.closest<HTMLElement>("[data-sidebar-group]");
+        const category = group?.dataset.category;
+        if (!group || !category) return;
+        const willCollapse = !group.hasAttribute("data-collapsed");
+        setGroupCollapsed(group, willCollapse);
+        const next = readState();
+        next[category] = willCollapse;
+        writeState(next);
+      });
+    });
+  };
+
+  initGroupToggles();
+
+  toggle?.addEventListener("click", () => setSidebarOpen(!sidebar?.hasAttribute("data-open")));
+  links.forEach((link) => link.addEventListener("click", () => setSidebarOpen(false)));
 </script>
-
-<style>
-  .sidebar-toggle {
-    display: none;
-  }
-
-  .sidebar {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    overflow-y: auto;
-    border-right: 1px solid var(--border);
-    background: var(--panel-bg);
-    padding: 1.25rem;
-  }
-
-  .brand {
-    display: inline-block;
-    margin-bottom: 1.5rem;
-    color: var(--page-fg);
-    font-weight: 700;
-    text-decoration: none;
-  }
-
-  .sidebar-group + .sidebar-group {
-    margin-top: 1.4rem;
-  }
-
-  .sidebar h2 {
-    margin: 0 0 0.5rem;
-    color: var(--muted-fg);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-  }
-
-  .sidebar ul {
-    display: grid;
-    gap: 0.2rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .sidebar a {
-    display: block;
-    border-radius: 0.45rem;
-    padding: 0.45rem 0.6rem;
-    color: var(--muted-fg);
-    overflow-wrap: anywhere;
-    text-decoration: none;
-  }
-
-  .sidebar a[aria-current="page"] {
-    background: color-mix(in srgb, var(--accent) 18%, transparent);
-    color: var(--page-fg);
-  }
-
-  @media (max-width: 860px) {
-    .sidebar-toggle {
-      display: inline-flex;
-      align-items: center;
-      min-height: 2.5rem;
-      border: 1px solid var(--border);
-      border-radius: 0.5rem;
-      background: var(--panel-bg);
-      color: var(--page-fg);
-      padding: 0 0.85rem;
-    }
-
-    .sidebar {
-      position: fixed;
-      z-index: 20;
-      inset: 4rem auto 0 0;
-      width: min(22rem, 86vw);
-      transform: translateX(-105%);
-      transition: transform 160ms ease;
-    }
-
-    .sidebar[data-open] {
-      transform: translateX(0);
-    }
-  }
-</style>

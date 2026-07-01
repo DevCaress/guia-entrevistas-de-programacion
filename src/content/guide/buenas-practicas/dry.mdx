@@ -1,0 +1,60 @@
+---
+title: "DRY — Don't Repeat Yourself"
+description: "Elimina la duplicacion de logica extrayendo abstracciones reutilizables. Cada pieza de conocimiento debe tener una unica representacion en el sistema."
+category: "Buenas practicas"
+section: "Principios"
+sidebar:
+  label: "DRY"
+  order: 21
+references:
+  - label: "The Pragmatic Programmer — DRY Principle"
+    url: "https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/"
+  - label: "DRY: Don't Repeat Yourself — refactoring.guru"
+    url: "https://refactoring.guru/extract-method"
+---
+
+**DRY** significa *Don't Repeat Yourself* (No te repitas). El principio establece que cada pieza de conocimiento o logica debe tener una unica representacion dentro del sistema. Cuando la misma logica aparece en varios lugares, un cambio de requisito obliga a actualizar todos esos puntos, lo que introduce inconsistencias y errores.
+
+DRY no trata solo de evitar copiar y pegar codigo. Tambien aplica a configuracion, documentacion, esquemas de base de datos y cualquier otra forma de conocimiento duplicado.
+
+## Violacion del principio
+
+```js
+function calculateStandardPrice(price) {
+  return price * 1.21;
+}
+
+function calculateReducedPrice(price) {
+  return price * 1.10;
+}
+
+function calculateSuperReducedPrice(price) {
+  return price * 1.04;
+}
+
+const total1 = calculateStandardPrice(100);
+const total2 = calculateReducedPrice(50);
+```
+
+Cada funcion repite la misma logica de multiplicacion. Si la formula cambia (p. ej. redondeo), hay que actualizarla en tres sitios.
+
+## Aplicando DRY
+
+```js
+const VAT_RATES = {
+  standard: 1.21,
+  reduced: 1.10,
+  superReduced: 1.04,
+};
+
+function calculatePrice(price, type = "standard") {
+  const multiplier = VAT_RATES[type];
+  if (!multiplier) throw new Error(`Unknown VAT type: ${type}`);
+  return price * multiplier;
+}
+
+const total1 = calculatePrice(100, "standard");
+const total2 = calculatePrice(50, "reduced");
+```
+
+La logica de calculo existe en un solo lugar. Cambiar las tasas o la formula solo requiere una modificacion.
