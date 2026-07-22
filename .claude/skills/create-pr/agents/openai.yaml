@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Pull Request"
+  short_description: "Prepare and open safe GitHub pull requests"
+  default_prompt: "Use $create-pr to prepare my branch and open a draft pull request."

@@ -29,6 +29,15 @@ npm run check:links
 
 Cada seccion nueva debe agregarse como `.mdx` en `src/content/guide/` con `title`, `description`, `category`, `sidebar.order` y `references`. Las referencias originales van en frontmatter y los ejemplos propios pueden agregarse con `examples` o como bloques de codigo MDX dentro del contenido.
 
+## Contributing
+
+Contributions are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) for the local setup, branch and commit conventions, content rules, and required validation.
+
+- Suggest a new topic or resource with the [content suggestion issue template](.github/ISSUE_TEMPLATE/content_suggestion.yml), or report a problem with the [bug report template](.github/ISSUE_TEMPLATE/bug_report.yml).
+- Open focused pull requests using the [PR template](.github/pull_request_template.md). Link the related issue with `Closes #<issue-number>` when applicable.
+- For content changes, run `npm run verify:content` and `npm run check:links`; run `npm run check:links -- --fetch` to verify that reference websites respond.
+- Project skills are available in `.claude/skills/`: `create-content` for new guide pages, `create-commit` for focused Conventional Commits, and `create-pr` for preparing draft pull requests.
+
 ## Índice
 
 - [Guía para entrevistas técnicas como Ingeniero de software](#guía-para-entrevistas-técnicas-como-ingeniero-de-software)

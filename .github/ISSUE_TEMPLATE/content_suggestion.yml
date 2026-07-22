@@ -1,0 +1,37 @@
+name: Suggest content or a resource
+description: Propose a topic, resource, or improvement for the guide.
+title: "docs: "
+labels:
+  - content
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for helping improve the guide's resources.
+  - type: input
+    id: topic
+    attributes:
+      label: Topic or section
+      description: Tell us where the content should appear.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Explain the content you propose and why it would be useful for technical interviews.
+    validations:
+      required: true
+  - type: textarea
+    id: resources
+    attributes:
+      label: Suggested resources
+      description: Share links and state the language of each resource.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I verified that an equivalent suggestion does not already exist.
+          required: true
+        - label: The suggested resources are relevant and legitimately accessible.
+          required: true

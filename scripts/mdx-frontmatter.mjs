@@ -50,7 +50,7 @@ function parseYamlSubset(yaml) {
         const [firstKey, firstValue] = splitYamlPair(first);
         item[firstKey] = parseScalar(firstValue ?? "");
         i += 1;
-        while (i < lines.length && /^    [A-Za-z]/.test(lines[i])) {
+        while (i < lines.length && /^ {4}[A-Za-z]/.test(lines[i])) {
           const [itemKey, itemValue] = splitYamlPair(lines[i].trim());
           item[itemKey] = parseScalar(itemValue ?? "");
           i += 1;
