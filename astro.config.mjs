@@ -4,7 +4,6 @@ import { defineConfig } from "astro/config";
 
 export default defineConfig({
   site: "https://caress.dev",
-  base: "/technical-interview-guide",
   devToolbar: {
     enabled: false
   },
