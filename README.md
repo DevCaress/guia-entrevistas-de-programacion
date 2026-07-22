@@ -6,7 +6,7 @@ Esta guia ahora se publica como un sitio estatico de Astro. El README conserva e
 
 ### Desarrollo local
 
-Usa Node.js `>=22.12.0`.
+Usa Node.js `>=25.12.0`.
 
 ```bash
 npm install
