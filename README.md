@@ -4,6 +4,8 @@
 
 Esta guia ahora se publica como un sitio estatico de Astro. El README conserva el indice historico, mientras que el contenido navegable vive en `src/content/guide/**/*.mdx`.
 
+Visita la guia en [caress.dev/guia](https://caress.dev/guia).
+
 ### Desarrollo local
 
 Usa Node.js `>=22.12.0`.
