@@ -26,6 +26,12 @@ export type SidebarGroup = {
   items: SidebarItem[];
 };
 
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+function withBasePath(path: string) {
+  return `${basePath}${path}`;
+}
+
 const byOrderThenTitle = (a: GuideEntryLike, b: GuideEntryLike) => {
   const orderDelta = a.data.sidebar.order - b.data.sidebar.order;
   if (orderDelta !== 0) return orderDelta;
@@ -37,7 +43,7 @@ export function entrySlug(entry: GuideEntryLike) {
 }
 
 export function guidePath(slug: string) {
-  return `/guia/${slug}`;
+  return withBasePath(`/guia/${slug}`);
 }
 
 export function groupGuideEntries(entries: GuideEntryLike[]): SidebarGroup[] {
@@ -62,7 +68,7 @@ export function groupGuideEntries(entries: GuideEntryLike[]): SidebarGroup[] {
 
 export function getFirstGuidePath(entries: GuideEntryLike[]) {
   const [firstGroup] = groupGuideEntries(entries);
-  return firstGroup?.items[0]?.href ?? "/guia";
+  return firstGroup?.items[0]?.href ?? withBasePath("/guia");
 }
 
 export function isActivePath(currentPath: string, href: string) {

@@ -26,7 +26,7 @@ const activeCategory = groups.find((group) =>
   data-sidebar
   class="border-r border-[var(--border)] bg-[var(--panel-bg)] p-5 sticky top-0 h-screen overflow-y-auto max-[860px]:fixed max-[860px]:z-20 max-[860px]:top-16 max-[860px]:right-auto max-[860px]:bottom-0 max-[860px]:left-0 max-[860px]:w-[min(22rem,86vw)] max-[860px]:-translate-x-full max-[860px]:transition-transform max-[860px]:duration-150 max-[860px]:data-[open]:translate-x-0"
 >
-  <a class="inline-block mb-6 font-bold text-[var(--page-fg)] no-underline" href="/">Guia de entrevistas</a>
+  <a class="inline-block mb-6 font-bold text-[var(--page-fg)] no-underline" href={import.meta.env.BASE_URL}>Guia de entrevistas</a>
   <nav aria-label="Secciones de la guia">
     {groups.map((group, groupIdx) => (
       <section
