@@ -1,0 +1,102 @@
+---
+title: "¿Qué es la cadena de prototipos en JavaScript?"
+description: "Como JavaScript resuelve propiedades a traves de [[Prototype]], que diferencia prototype de __proto__ y donde termina la cadena."
+category: "Preguntas frecuentes"
+section: "JavaScript"
+sidebar:
+  label: "Cadena de prototipos"
+  order: 613
+references:
+  - label: "MDN — Inheritance and the prototype chain"
+    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain"
+  - label: "MDN — Object.getPrototypeOf"
+    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getPrototypeOf"
+---
+
+import CodeExample from '../../../../components/CodeExample.astro';
+
+En JavaScript, cada objeto tiene una referencia interna llamada `[[Prototype]]` que apunta a otro objeto (o a `null`). Cuando accedes a una propiedad, el motor primero la busca en el objeto. Si no la encuentra, sigue por `[[Prototype]]` y repite el proceso hasta llegar a `null`. A esa secuencia se le llama **cadena de prototipos** y es el mecanismo nativo de herencia del lenguaje.
+
+## Como funciona la busqueda
+
+<CodeExample title="Lookup a traves de la cadena" language="javascript">
+
+```js
+const animal = {
+  respirar() {
+    return 'respirando';
+  },
+};
+
+const perro = Object.create(animal);
+perro.ladrar = () => 'guau';
+
+perro.ladrar();    // 'guau'        -> esta en perro
+perro.respirar();  // 'respirando'  -> heredado desde animal
+perro.volar;       // undefined     -> no esta en ninguno
+```
+
+</CodeExample>
+
+El motor recorre `perro -> animal -> Object.prototype -> null`. Cuando el lookup llega a `null` sin encontrar la propiedad, devuelve `undefined`.
+
+## `prototype` vs `__proto__`
+
+Dos nombres que se confunden a menudo:
+
+- **`__proto__`** (o mejor, `Object.getPrototypeOf(obj)`): es la referencia real de un objeto a su prototipo. Existe en **todas las instancias**.
+- **`prototype`**: es una propiedad que solo tienen las **funciones**. Define que objeto se asignara como `[[Prototype]]` de las instancias creadas con `new`.
+
+<CodeExample title="prototype vs __proto__" language="javascript">
+
+```js
+function Usuario(nombre) {
+  this.nombre = nombre;
+}
+
+Usuario.prototype.saludar = function () {
+  return `Hola, ${this.nombre}`;
+};
+
+const ada = new Usuario('Ada');
+
+Object.getPrototypeOf(ada) === Usuario.prototype; // true
+ada.saludar(); // 'Hola, Ada' -> resuelto via prototype chain
+```
+
+</CodeExample>
+
+## Final de la cadena
+
+Casi todos los objetos terminan su cadena en `Object.prototype`, cuyo `[[Prototype]]` es `null`.
+
+<CodeExample title="Recorrer la cadena" language="javascript">
+
+```js
+const obj = {};
+
+Object.getPrototypeOf(obj) === Object.prototype;            // true
+Object.getPrototypeOf(Object.prototype);                    // null
+```
+
+</CodeExample>
+
+Puedes crear objetos sin prototipo si quieres un diccionario "limpio" sin metodos heredados:
+
+<CodeExample title="Objeto sin prototipo" language="javascript">
+
+```js
+const diccionario = Object.create(null);
+diccionario.clave = 'valor';
+
+diccionario.hasOwnProperty; // undefined  -> no hereda nada
+```
+
+</CodeExample>
+
+## Puntos clave
+
+- La herencia en JavaScript es **prototipal**, no clasica: los objetos heredan de otros objetos.
+- Las **clases ES6** son azucar sintactico sobre la cadena de prototipos.
+- Modificar `Object.prototype` o `Array.prototype` afecta a **todos** los objetos del programa: evitalo en codigo de produccion.
+- Cuanto mas larga la cadena, mas pasos hace cada lookup: relevante en hot paths.

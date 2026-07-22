@@ -1,0 +1,71 @@
+---
+title: "GRASP — General Responsibility Assignment Software Patterns"
+description: "Nueve patrones para asignar responsabilidades a clases y objetos: Experto en Informacion, Creador, Controlador, Bajo Acoplamiento, Alta Cohesion y mas."
+category: "Buenas practicas"
+section: "Principios"
+sidebar:
+  label: "GRASP"
+  order: 24
+references:
+  - label: "Applying UML and Patterns — Craig Larman"
+    url: "https://www.pearson.com/en-us/subject-catalog/p/applying-uml-and-patterns-an-introduction-to-object-oriented-analysis-and-design-and-iterative-development/P200000009412"
+  - label: "GRASP Patterns — Wikipedia"
+    url: "https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)"
+---
+
+**GRASP** (*General Responsibility Assignment Software Patterns*) es un conjunto de nueve principios definidos por Craig Larman para guiar como asignar responsabilidades a clases y objetos en el diseno orientado a objetos:
+
+1. **Experto en Informacion** — asigna la responsabilidad a la clase que tiene la informacion necesaria para cumplirla.
+2. **Creador** — la clase B debe crear instancias de A si B contiene, agrega o registra objetos A.
+3. **Controlador** — un objeto no-UI coordina los casos de uso del sistema.
+4. **Bajo Acoplamiento** — minimiza las dependencias entre clases para facilitar el cambio.
+5. **Alta Cohesion** — cada clase tiene responsabilidades fuertemente relacionadas entre si.
+6. **Polimorfismo** — usa polimorfismo en lugar de condicionales para manejar variaciones de comportamiento.
+7. **Indireccion** — introduce un intermediario para desacoplar componentes.
+8. **Fabricacion Pura** — crea una clase artificial para mantener alta cohesion y bajo acoplamiento.
+9. **Variaciones Protegidas** — encapsula los puntos de variacion para que los cambios no se propaguen.
+
+## Ejemplo: Experto en Informacion
+
+```js
+// Violation — OrderService knows too much about Order's internals
+class OrderService {
+  calculateTotal(order) {
+    return order.items.reduce((sum, item) => sum + item.price * item.qty, 0);
+  }
+
+  calculateDiscount(order) {
+    const total = this.calculateTotal(order);
+    return total > 100 ? total * 0.1 : 0;
+  }
+}
+
+// Applying Information Expert
+// Order owns the data, so it handles the calculations
+class Order {
+  constructor(items) {
+    this.items = items;
+  }
+
+  getTotal() {
+    return this.items.reduce((sum, item) => sum + item.price * item.qty, 0);
+  }
+
+  getDiscount() {
+    return this.getTotal() > 100 ? this.getTotal() * 0.1 : 0;
+  }
+
+  getFinalPrice() {
+    return this.getTotal() - this.getDiscount();
+  }
+}
+
+const order = new Order([
+  { price: 60, qty: 2 },
+  { price: 10, qty: 1 },
+]);
+
+console.log(order.getFinalPrice()); // 117
+```
+
+`Order` concentra toda la logica sobre su propio estado. `OrderService` queda libre de conocer la estructura interna de los items.

@@ -45,11 +45,13 @@ export function groupGuideEntries(entries: GuideEntryLike[]): SidebarGroup[] {
   const groups = new Map<string, SidebarItem[]>();
 
   for (const entry of sortedEntries) {
+    const slug = entrySlug(entry);
+    if (slug.split("/").length > 2) continue;
     const item: SidebarItem = {
-      href: guidePath(entrySlug(entry)),
+      href: guidePath(slug),
       label: entry.data.sidebar.label ?? entry.data.title,
       title: entry.data.title,
-      slug: entrySlug(entry),
+      slug,
       order: entry.data.sidebar.order
     };
     groups.set(entry.data.category, [...(groups.get(entry.data.category) ?? []), item]);

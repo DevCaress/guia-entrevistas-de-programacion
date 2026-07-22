@@ -1,0 +1,47 @@
+---
+title: "Preguntas frecuentes de JavaScript"
+description: "Lista de preguntas tipicas de entrevistas tecnicas de JavaScript con enlaces a respuestas, codigo y recursos."
+category: "Preguntas frecuentes"
+section: "JavaScript"
+sidebar:
+  label: "JS - Preguntas"
+  order: 611
+references:
+  - label: "Javascript Interview questions (sudheerj)"
+    url: "https://github.com/sudheerj/javascript-interview-questions"
+  - label: "MDN — JavaScript Guide"
+    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"
+---
+
+import Callout from '../../../components/Callout.astro';
+
+<Callout title="Como usar esta seccion">
+  Cada pregunta enlaza a una pagina dedicada con explicacion, ejemplos de codigo y referencias para profundizar. Comienza por la que mas necesites repasar.
+</Callout>
+
+<p class="mt-6 text-[var(--muted-fg)]">
+  <a href="/guia/preguntas-frecuentes" class="hover:underline">&larr; Volver a Preguntas frecuentes</a>
+</p>
+
+## Preguntas
+
+<ul class="mt-4 space-y-3">
+  <li class="border border-[var(--border)] rounded-lg p-4 bg-[var(--panel-bg)]">
+    <a href="/guia/preguntas-frecuentes/javascript/crear-objetos" class="text-[var(--page-fg)] font-medium hover:underline">
+      1. &iquest;Cuales son las formas posibles de crear objetos en JavaScript?
+    </a>
+    <p class="mt-1 text-sm text-[var(--muted-fg)]">Literales, constructores, <code>Object.create</code>, clases ES6, factory functions y mas.</p>
+  </li>
+  <li class="border border-[var(--border)] rounded-lg p-4 bg-[var(--panel-bg)]">
+    <a href="/guia/preguntas-frecuentes/javascript/cadena-de-prototipos" class="text-[var(--page-fg)] font-medium hover:underline">
+      2. &iquest;Que es la cadena de prototipos?
+    </a>
+    <p class="mt-1 text-sm text-[var(--muted-fg)]">Como JavaScript busca propiedades a traves de <code>[[Prototype]]</code> hasta llegar a <code>null</code>.</p>
+  </li>
+  <li class="border border-[var(--border)] rounded-lg p-4 bg-[var(--panel-bg)]">
+    <a href="/guia/preguntas-frecuentes/javascript/call-apply-bind" class="text-[var(--page-fg)] font-medium hover:underline">
+      3. Diferencias entre <code>call</code>, <code>apply</code> y <code>bind</code>
+    </a>
+    <p class="mt-1 text-sm text-[var(--muted-fg)]">Como cada metodo controla el valor de <code>this</code> y los argumentos al invocar funciones.</p>
+  </li>
+</ul>

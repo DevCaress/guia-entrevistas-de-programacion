@@ -6,16 +6,7 @@ type Props = {
 const { title } = Astro.props;
 ---
 
-<aside class="callout">
+<aside class="border-l-4 border-[var(--accent)] rounded-[0.35rem] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] p-4">
   {title && <strong>{title}</strong>}
   <slot />
 </aside>
-
-<style>
-  .callout {
-    border-left: 4px solid var(--accent);
-    border-radius: 0.35rem;
-    background: color-mix(in srgb, var(--accent) 10%, transparent);
-    padding: 1rem;
-  }
-</style>

@@ -1,0 +1,54 @@
+---
+title: "KISS — Keep It Simple, Stupid"
+description: "Prefiere la solucion mas simple que resuelva el problema. La complejidad innecesaria dificulta el mantenimiento y la comprension del codigo."
+category: "Buenas practicas"
+section: "Principios"
+sidebar:
+  label: "KISS"
+  order: 22
+references:
+  - label: "KISS Principle — Wikipedia"
+    url: "https://en.wikipedia.org/wiki/KISS_principle"
+  - label: "Clean Code — Robert C. Martin"
+    url: "https://www.oreilly.com/library/view/clean-code-a/9780136083238/"
+---
+
+**KISS** significa *Keep It Simple, Stupid* (Mantelo simple). El principio promueve escribir codigo que sea facil de leer, entender y mantener. La complejidad innecesaria — algoritmos rebuscados, abstracciones prematuras, estructuras de datos excesivas — es una fuente constante de bugs y dificultades.
+
+La solucion mas simple que funciona correctamente es, en la mayoria de los casos, la mejor solucion.
+
+## Violacion del principio
+
+```js
+function isEven(number) {
+  if (number % 2 === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function filterEvens(list) {
+  const result = [];
+  for (let i = 0; i < list.length; i++) {
+    if (isEven(list[i]) === true) {
+      result.push(list[i]);
+    }
+  }
+  return result;
+}
+```
+
+La comparacion `=== true` es redundante, y el `if/else` devuelve booleanos que ya produce `%`.
+
+## Aplicando KISS
+
+```js
+const isEven = (number) => number % 2 === 0;
+
+const filterEvens = (list) => list.filter(isEven);
+
+console.log(filterEvens([1, 2, 3, 4, 5])); // [2, 4]
+```
+
+El codigo hace exactamente lo mismo con menos lineas, sin perdida de claridad. Cada parte tiene una responsabilidad obvia y se puede leer de corrido.

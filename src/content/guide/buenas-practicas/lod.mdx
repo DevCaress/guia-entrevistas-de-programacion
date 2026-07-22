@@ -1,0 +1,83 @@
+---
+title: "LoD — Ley de Demeter"
+description: "Un objeto solo debe hablar con sus colaboradores directos, no con los colaboradores de sus colaboradores. Minimiza el acoplamiento estructural entre objetos."
+category: "Buenas practicas"
+section: "Principios"
+sidebar:
+  label: "LoD"
+  order: 25
+references:
+  - label: "Law of Demeter — Wikipedia"
+    url: "https://en.wikipedia.org/wiki/Law_of_Demeter"
+  - label: "The Pragmatic Programmer — Law of Demeter"
+    url: "https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/"
+---
+
+La **Ley de Demeter** (LoD), tambien conocida como *Principio del Minimo Conocimiento*, establece que un metodo de un objeto solo deberia invocar metodos de:
+
+- El propio objeto (`this`).
+- Los parametros que recibe.
+- Los objetos que crea internamente.
+- Sus dependencias directas (atributos del objeto).
+
+Dicho de otra forma: **habla solo con tus amigos inmediatos, no con los amigos de tus amigos**. Las cadenas largas de llamadas (`a.getB().getC().doSomething()`) acoplan el codigo a la estructura interna de objetos que no son responsabilidad de quien llama.
+
+## Violacion del principio
+
+```js
+// The caller knows the internal structure of three objects
+function getCustomerCity(order) {
+  return order.getCustomer().getAddress().getCity().getName();
+}
+```
+
+Si `Address` o `City` cambian su estructura, esta funcion se rompe aunque `Order` no haya cambiado.
+
+## Aplicando LoD
+
+```js
+class City {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+class Address {
+  constructor(city) {
+    this.city = city;
+  }
+
+  getCityName() {
+    return this.city.name;
+  }
+}
+
+class Customer {
+  constructor(name, address) {
+    this.name = name;
+    this.address = address;
+  }
+
+  getCity() {
+    return this.address.getCityName();
+  }
+}
+
+class Order {
+  constructor(customer) {
+    this.customer = customer;
+  }
+
+  getCustomerCity() {
+    return this.customer.getCity();
+  }
+}
+
+const order = new Order(
+  new Customer("Ana", new Address(new City("Madrid")))
+);
+
+console.log(order.getCustomerCity()); // "Madrid"
+```
+
+Cada clase delega a su vecino inmediato. El cliente del `Order` solo llama a un metodo de `Order`; no necesita conocer ni `Address` ni `City`.

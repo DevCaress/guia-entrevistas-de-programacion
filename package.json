@@ -14,20 +14,31 @@
     "test:e2e": "playwright test",
     "verify:content": "node scripts/verify-content-migration.mjs",
     "check:links": "node scripts/check-reference-links.mjs",
-    "format": "prettier --check ."
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@astrojs/mdx": "latest",
+    "@astrojs/mdx": "^7.0.0",
     "@tailwindcss/vite": "^4.1.17",
-    "astro": "6.4.8",
+    "astro": "^7.0.0",
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
-    "@astrojs/check": "latest",
+    "@astrojs/check": "^0.9.2",
+    "@eslint/js": "latest",
     "@playwright/test": "latest",
     "@types/node": "^26.0.0",
+    "eslint": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-plugin-astro": "latest",
+    "globals": "latest",
     "prettier": "latest",
+    "prettier-plugin-astro": "latest",
+    "prettier-plugin-tailwindcss": "latest",
     "typescript": "latest",
+    "typescript-eslint": "latest",
     "vitest": "latest"
   }
 }

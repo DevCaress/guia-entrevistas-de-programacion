@@ -12,9 +12,9 @@ const { references = [] } = Astro.props;
 ---
 
 {references.length > 0 && (
-  <section class="references" aria-labelledby="references-title">
+  <section class="mt-12 border-t border-[var(--border)] pt-6" aria-labelledby="references-title">
     <h2 id="references-title">Referencias</h2>
-    <ul>
+    <ul class="grid gap-[0.6rem] pl-[1.2rem]">
       {references.map((reference) => (
         <li>
           <a href={reference.url} rel="noreferrer" target="_blank">{reference.label}</a>
@@ -23,17 +23,3 @@ const { references = [] } = Astro.props;
     </ul>
   </section>
 )}
-
-<style>
-  .references {
-    margin-top: 3rem;
-    border-top: 1px solid var(--border);
-    padding-top: 1.5rem;
-  }
-
-  .references ul {
-    display: grid;
-    gap: 0.6rem;
-    padding-left: 1.2rem;
-  }
-</style>

@@ -1,0 +1,59 @@
+---
+title: "YAGNI — You Aren't Gonna Need It"
+description: "No implementes funcionalidad hasta que sea realmente necesaria. Agregar codigo especulativo aumenta la deuda tecnica sin aportar valor inmediato."
+category: "Buenas practicas"
+section: "Principios"
+sidebar:
+  label: "YAGNI"
+  order: 23
+references:
+  - label: "YAGNI — Martin Fowler"
+    url: "https://martinfowler.com/bliki/Yagni.html"
+  - label: "Extreme Programming Explained — Kent Beck"
+    url: "https://www.oreilly.com/library/view/extreme-programming-explained/0321278658/"
+---
+
+**YAGNI** significa *You Aren't Gonna Need It* (No lo vas a necesitar). El principio, originado en la metodologia de Extreme Programming, dice que no debes agregar funcionalidad hasta que sea estrictamente necesaria.
+
+Escribir codigo "por si acaso" incrementa la superficie de mantenimiento, complica el diseno actual y puede llevar a abstracciones equivocadas basadas en requisitos que nunca llegan.
+
+## Violacion del principio
+
+```js
+class User {
+  constructor(name, email) {
+    this.name = name;
+    this.email = email;
+    this.preferences = {};     // nobody asked for this yet
+    this.actionHistory = [];   // nobody asked for this yet
+    this.socialNetworks = {};  // nobody asked for this yet
+  }
+
+  // unsolicited feature
+  exportToCSV() {
+    return `${this.name},${this.email}`;
+  }
+
+  // unsolicited feature
+  syncWithCRM() {
+    // speculative logic...
+  }
+}
+```
+
+Todo ese codigo extra se convierte en deuda: hay que mantenerlo, testearlo y documentarlo aunque nunca se use.
+
+## Aplicando YAGNI
+
+```js
+class User {
+  constructor(name, email) {
+    this.name = name;
+    this.email = email;
+  }
+}
+
+const user = new User("Ana", "ana@example.com");
+```
+
+Solo lo que el sistema necesita hoy. Cuando llegue el requisito real de exportar o sincronizar, se agrega con contexto suficiente para hacerlo bien.
