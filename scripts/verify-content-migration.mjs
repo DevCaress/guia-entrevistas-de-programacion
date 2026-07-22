@@ -5,7 +5,7 @@ import { listMdxFiles, readMdxFrontmatter } from "./mdx-frontmatter.mjs";
 
 const requiredSections = {
   "Principios SOLID": "buenas-practicas/solid-principles",
-  DRY: "buenas-practicas/dry-kiss-yagni-grasp-lod",
+  DRY: "buenas-practicas/dry",
   "Clean Code": "buenas-practicas/clean-code",
   "Clean architecture": "buenas-practicas/clean-architecture",
   Angular: "buenas-practicas-en/angular",
