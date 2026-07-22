@@ -1,6 +1,6 @@
 ---
 title: "Complejidad algoritmica"
-description: "Recursos para entender Big-O y analizar la complejidad de algoritmos."
+description: "Que es la complejidad algoritmica y como usar Big-O para analizar el tiempo y la memoria de un algoritmo."
 category: "Algoritmos y estructuras de datos"
 section: "Fundamentos"
 sidebar:
@@ -13,6 +13,324 @@ references:
     url: "https://medium.com/nowports-tech/introducción-a-big-o-notation-95ecca8bd866"
   - label: "Analysis of Algorithms | Big-O analysis"
     url: "https://www.geeksforgeeks.org/analysis-algorithms-big-o-analysis/"
+  - label: "Big-O Cheat Sheet"
+    url: "https://www.bigocheatsheet.com/"
+  - label: "freeCodeCamp — Big O Notation"
+    url: "https://www.freecodecamp.org/news/big-o-notation-why-it-matters-and-why-it-doesnt-1674cfa8a23c/"
+  - label: "Khan Academy — Asymptotic notation"
+    url: "https://www.khanacademy.org/computing/computer-science/algorithms/asymptotic-notation/a/asymptotic-notation"
+  - label: "GeeksforGeeks — Time Complexity and Space Complexity"
+    url: "https://www.geeksforgeeks.org/time-complexity-and-space-complexity/"
+  - label: "MDN — Algorithm (Glossary)"
+    url: "https://developer.mozilla.org/en-US/docs/Glossary/Algorithm"
+  - label: "Introduction to Algorithms (CLRS), MIT Press"
+    url: "https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/"
+  - label: "VisuAlgo — Visualizacion de algoritmos"
+    url: "https://visualgo.net/en"
 ---
 
-Esta seccion reune recursos y criterios de estudio sobre Complejidad algoritmica. Usa las referencias para profundizar y agrega ejemplos propios conforme avance la guia.
+import Callout from '../../../components/Callout.astro';
+import CodeExample from '../../../components/CodeExample.astro';
+
+La **complejidad algoritmica** mide como crece el consumo de recursos de un algoritmo (tiempo de ejecucion y memoria) a medida que aumenta el tamano de la entrada, que solemos llamar `n`. No nos dice cuantos segundos tarda un programa en una maquina concreta, sino como se comporta cuando los datos crecen: si duplicar la entrada duplica el trabajo, lo cuadruplica o lo dispara sin control.
+
+Entender esto es clave porque te permite comparar dos soluciones sin depender del hardware, del lenguaje ni de micro-optimizaciones, y anticipar si un algoritmo seguira siendo viable con un millon de elementos. Es uno de los temas mas preguntados en entrevistas tecnicas.
+
+## Que medimos: operaciones, no segundos
+
+El tiempo de reloj depende de la CPU, del lenguaje, de la carga del sistema y hasta del compilador. Por eso, en lugar de medir segundos, contamos **operaciones basicas** (comparaciones, asignaciones, accesos) en funcion de `n`. Lo que nos interesa es la **tasa de crecimiento**: como escala ese conteo cuando `n` se vuelve grande.
+
+Por ejemplo, recorrer una lista de `n` elementos hace del orden de `n` operaciones. Que cada iteracion cueste 3 o 5 instrucciones internas no cambia la idea central: el trabajo crece de forma proporcional a `n`.
+
+## Notacion Big-O
+
+**Big-O** describe la cota superior asintotica de un algoritmo: cuanto crece su costo en el **peor caso** cuando `n` tiende a infinito. Escribimos O(n), O(n^2), O(log n), etc. Para obtener el Big-O de un algoritmo se aplican dos reglas practicas:
+
+- **Se ignoran las constantes**: O(2n) se simplifica a O(n), y O(n / 2) tambien es O(n). Las constantes no cambian la forma de la curva.
+- **Se conserva solo el termino dominante**: O(n^2 + n + 100) se simplifica a O(n^2), porque para `n` grande el termino cuadratico domina a todos los demas.
+
+<Callout title="Big-O, Big-Theta y Big-Omega">
+  Big-O (O) es la cota superior (peor caso). Big-Omega (Ω) es la cota inferior (mejor caso) y Big-Theta (Θ) es la cota ajustada, cuando el mejor y el peor caso crecen igual. En la practica y en entrevistas casi siempre se habla de Big-O, asumiendo el peor caso.
+</Callout>
+
+## Grafico de tasas de crecimiento
+
+Este grafico compara como escalan las complejidades mas comunes. Mientras mas empinada es la curva, peor escala el algoritmo cuando crece la entrada `n`.
+
+<svg viewBox="0 0 440 260" role="img" aria-label="Grafico comparativo de tasas de crecimiento: O(1), O(log n), O(n), O(n log n), O(n cuadrado) y O(2 elevado a n)" class="my-6 w-full max-w-2xl h-auto">
+  <line x1="50" y1="20" x2="50" y2="215" stroke="currentColor" stroke-width="1.5" opacity="0.6" />
+  <line x1="50" y1="215" x2="410" y2="215" stroke="currentColor" stroke-width="1.5" opacity="0.6" />
+  <text x="18" y="120" fill="currentColor" font-size="11" opacity="0.7" transform="rotate(-90 18 120)">Operaciones</text>
+  <text x="180" y="240" fill="currentColor" font-size="11" opacity="0.7">Tamano de la entrada (n)</text>
+
+  <polyline fill="none" stroke="#22c55e" stroke-width="2.5" points="50,205 410,204" />
+  <text x="360" y="198" fill="#22c55e" font-size="11">O(1)</text>
+
+  <polyline fill="none" stroke="#14b8a6" stroke-width="2.5" points="50,205 110,190 180,181 270,174 410,166" />
+  <text x="360" y="160" fill="#14b8a6" font-size="11">O(log n)</text>
+
+  <polyline fill="none" stroke="#3b82f6" stroke-width="2.5" points="50,205 410,110" />
+  <text x="360" y="104" fill="#3b82f6" font-size="11">O(n)</text>
+
+  <polyline fill="none" stroke="#a855f7" stroke-width="2.5" points="50,205 140,178 230,142 300,110 360,80" />
+  <text x="300" y="72" fill="#a855f7" font-size="11">O(n log n)</text>
+
+  <polyline fill="none" stroke="#f59e0b" stroke-width="2.5" points="50,205 150,196 220,170 285,125 330,78 360,38" />
+  <text x="315" y="34" fill="#f59e0b" font-size="11">O(n^2)</text>
+
+  <polyline fill="none" stroke="#ef4444" stroke-width="2.5" points="50,207 120,200 175,175 205,120 225,62 240,32 260,26" />
+  <text x="150" y="40" fill="#ef4444" font-size="11">O(2^n)</text>
+</svg>
+
+La siguiente tabla vuelve tangible esa diferencia: muestra el numero aproximado de operaciones para distintos tamanos de entrada.
+
+<table class="w-full border-collapse text-left text-sm my-6">
+  <thead>
+    <tr class="border-b border-[var(--border)]">
+      <th class="py-2 pr-4">Notacion</th>
+      <th class="py-2 pr-4">Nombre</th>
+      <th class="py-2 pr-4">n = 10</th>
+      <th class="py-2 pr-4">n = 100</th>
+      <th class="py-2 pr-4">n = 1000</th>
+    </tr>
+  </thead>
+  <tbody class="text-[var(--muted-fg)]">
+    <tr class="border-b border-[var(--border)]">
+      <td class="py-2 pr-4">O(1)</td>
+      <td class="py-2 pr-4">Constante</td>
+      <td class="py-2 pr-4">1</td>
+      <td class="py-2 pr-4">1</td>
+      <td class="py-2 pr-4">1</td>
+    </tr>
+    <tr class="border-b border-[var(--border)]">
+      <td class="py-2 pr-4">O(log n)</td>
+      <td class="py-2 pr-4">Logaritmica</td>
+      <td class="py-2 pr-4">3</td>
+      <td class="py-2 pr-4">7</td>
+      <td class="py-2 pr-4">10</td>
+    </tr>
+    <tr class="border-b border-[var(--border)]">
+      <td class="py-2 pr-4">O(n)</td>
+      <td class="py-2 pr-4">Lineal</td>
+      <td class="py-2 pr-4">10</td>
+      <td class="py-2 pr-4">100</td>
+      <td class="py-2 pr-4">1000</td>
+    </tr>
+    <tr class="border-b border-[var(--border)]">
+      <td class="py-2 pr-4">O(n log n)</td>
+      <td class="py-2 pr-4">Linealitmica</td>
+      <td class="py-2 pr-4">33</td>
+      <td class="py-2 pr-4">664</td>
+      <td class="py-2 pr-4">9966</td>
+    </tr>
+    <tr class="border-b border-[var(--border)]">
+      <td class="py-2 pr-4">O(n^2)</td>
+      <td class="py-2 pr-4">Cuadratica</td>
+      <td class="py-2 pr-4">100</td>
+      <td class="py-2 pr-4">10 000</td>
+      <td class="py-2 pr-4">1 000 000</td>
+    </tr>
+    <tr>
+      <td class="py-2 pr-4">O(2^n)</td>
+      <td class="py-2 pr-4">Exponencial</td>
+      <td class="py-2 pr-4">1024</td>
+      <td class="py-2 pr-4">~1.3 x 10^30</td>
+      <td class="py-2 pr-4">enorme</td>
+    </tr>
+  </tbody>
+</table>
+
+## Complejidad temporal (tiempo)
+
+La complejidad temporal describe como crece el numero de operaciones en funcion de `n`. Estas son las clases mas comunes, de la mejor a la peor.
+
+### O(1) — Constante
+
+El costo no depende del tamano de la entrada: siempre hace la misma cantidad de trabajo. Acceder a un indice de un array o leer una clave de un objeto o `Map` es O(1).
+
+<CodeExample title="Acceso constante" language="javascript">
+
+```js
+function firstElement(items) {
+  return items[0];
+}
+```
+
+</CodeExample>
+
+### O(log n) — Logaritmica
+
+En cada paso se descarta la mitad de los datos, asi que el numero de pasos crece muy lentamente. El ejemplo clasico es la busqueda binaria sobre un array ordenado.
+
+<CodeExample title="Busqueda binaria" language="javascript">
+
+```js
+function binarySearch(sortedItems, target) {
+  let low = 0;
+  let high = sortedItems.length - 1;
+
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2);
+    if (sortedItems[mid] === target) return mid;
+    if (sortedItems[mid] < target) low = mid + 1;
+    else high = mid - 1;
+  }
+
+  return -1;
+}
+```
+
+</CodeExample>
+
+### O(n) — Lineal
+
+El trabajo crece de forma proporcional a `n`: un solo recorrido de la entrada. Buscar el maximo de una lista es O(n).
+
+<CodeExample title="Recorrido lineal" language="javascript">
+
+```js
+function findMax(numbers) {
+  let max = numbers[0];
+  for (const value of numbers) {
+    if (value > max) max = value;
+  }
+  return max;
+}
+```
+
+</CodeExample>
+
+### O(n log n) — Linealitmica
+
+Es el mejor costo posible para ordenar por comparaciones. Algoritmos como merge sort o el `sort` nativo del lenguaje son O(n log n): hacen `log n` niveles de division y `n` trabajo en cada nivel.
+
+<CodeExample title="Ordenamiento eficiente" language="javascript">
+
+```js
+function sortAscending(numbers) {
+  return [...numbers].sort((a, b) => a - b);
+}
+```
+
+</CodeExample>
+
+### O(n^2) — Cuadratica
+
+Aparece con bucles anidados que recorren la entrada dentro de otro recorrido de la entrada. Comparar cada elemento con todos los demas para buscar duplicados de forma ingenua es O(n^2).
+
+<CodeExample title="Bucles anidados" language="javascript">
+
+```js
+function hasDuplicate(items) {
+  for (let i = 0; i < items.length; i++) {
+    for (let j = i + 1; j < items.length; j++) {
+      if (items[i] === items[j]) return true;
+    }
+  }
+  return false;
+}
+```
+
+</CodeExample>
+
+### O(2^n) — Exponencial
+
+El costo se duplica con cada elemento adicional. La version recursiva ingenua de Fibonacci recalcula los mismos valores una y otra vez, generando un arbol de llamadas que crece exponencialmente. Es inviable incluso para entradas moderadas.
+
+<CodeExample title="Fibonacci recursivo ingenuo" language="javascript">
+
+```js
+function fibonacci(n) {
+  if (n <= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+```
+
+</CodeExample>
+
+<Callout title="Y mas alla: O(n!)">
+  La complejidad factorial O(n!) es aun peor que la exponencial. Aparece al generar todas las permutaciones de una entrada o en soluciones de fuerza bruta al problema del viajante. Con solo 15 elementos ya supera el billon de operaciones.
+</Callout>
+
+## Complejidad espacial (memoria)
+
+La complejidad espacial mide cuanta **memoria adicional** necesita un algoritmo mas alla de la entrada. Se suele reportar el **espacio auxiliar**: las estructuras nuevas que creas, mas la memoria del stack por la recursion. La entrada en si no siempre se cuenta.
+
+### O(1) espacio
+
+El algoritmo usa una cantidad fija de memoria extra sin importar el tamano de la entrada, tipicamente unas pocas variables.
+
+<CodeExample title="Espacio constante" language="javascript">
+
+```js
+function sum(numbers) {
+  let total = 0;
+  for (const value of numbers) {
+    total += value;
+  }
+  return total;
+}
+```
+
+</CodeExample>
+
+### O(n) espacio
+
+La memoria extra crece con la entrada, por ejemplo al construir una nueva estructura del tamano de `n`.
+
+<CodeExample title="Espacio lineal" language="javascript">
+
+```js
+function double(numbers) {
+  const result = [];
+  for (const value of numbers) {
+    result.push(value * 2);
+  }
+  return result;
+}
+```
+
+</CodeExample>
+
+### La recursion tambien cuesta memoria
+
+Cada llamada recursiva pendiente ocupa un marco en el call stack. Una recursion lineal como la siguiente usa O(n) de memoria en el stack, aunque no cree ninguna estructura de datos explicita.
+
+<CodeExample title="Memoria del call stack" language="javascript">
+
+```js
+function sumTo(n) {
+  if (n === 0) return 0;
+  return n + sumTo(n - 1);
+}
+```
+
+</CodeExample>
+
+<Callout title="Trade-off tiempo vs. espacio">
+  A menudo se puede cambiar tiempo por memoria y viceversa. La memoizacion, por ejemplo, guarda resultados ya calculados en una tabla: convierte el Fibonacci exponencial O(2^n) en uno lineal O(n) en tiempo, a costa de O(n) de memoria. Elegir el balance correcto depende del problema y de las restricciones.
+</Callout>
+
+## Mejor, peor y caso promedio
+
+Un mismo algoritmo puede comportarse distinto segun la entrada concreta. Tomemos una busqueda lineal:
+
+- **Mejor caso** — el elemento buscado esta en la primera posicion: O(1).
+- **Peor caso** — el elemento esta al final o no existe: O(n).
+- **Caso promedio** — en promedio se recorre la mitad de la lista: O(n).
+
+Cuando alguien dice "la complejidad de este algoritmo es O(n)" casi siempre se refiere al **peor caso**, porque es la garantia mas util: nos dice que tan mal puede ir como maximo.
+
+## Como analizar tu codigo
+
+Algunas reglas practicas para estimar el Big-O de un fragmento de codigo:
+
+- **Bucle simple** sobre la entrada: O(n).
+- **Bucles anidados** sobre la entrada: se multiplican, dos niveles dan O(n^2).
+- **Dividir el problema a la mitad** en cada paso: aparece un factor log n (como en la busqueda binaria).
+- **Operaciones consecutivas**: se suman y luego se conserva el termino dominante (O(n) + O(n^2) es O(n^2)).
+- **Recursion**: dibuja el arbol de llamadas; su tamano total es la complejidad temporal, y su profundidad, el costo de memoria en el stack.
+
+<Callout title="Consejos para entrevistas">
+  Indica siempre la complejidad de tiempo y de espacio de tu solucion, y aclara que estas describiendo el peor caso. Si tu primer enfoque es O(n^2), menciona en voz alta si existe una version O(n log n) o O(n) usando una estructura auxiliar como un hash set. Justificar el analisis suele valer tanto como llegar a la respuesta.
+</Callout>
