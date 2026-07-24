@@ -42,4 +42,31 @@ describe("guide content frontmatter", () => {
       await rm(directory, { recursive: true, force: true });
     }
   });
+
+  it("parses frontmatter from an MDX file with a UTF-8 BOM", async () => {
+    const directory = await mkdtemp(join(tmpdir(), "guia-mdx-bom-"));
+    const file = join(directory, "bom-fixture.mdx");
+    const source = [
+      "\uFEFF---",
+      "title: Compatibilidad BOM",
+      "category: Pruebas",
+      "sidebar:",
+      "  order: 43",
+      "---",
+      "",
+      "# Contenido",
+      ""
+    ].join("\n");
+
+    try {
+      await writeFile(file, source, "utf8");
+      await expect(readMdxFrontmatter(file)).resolves.toMatchObject({
+        title: "Compatibilidad BOM",
+        category: "Pruebas",
+        sidebar: { order: 43 }
+      });
+    } finally {
+      await rm(directory, { recursive: true, force: true });
+    }
+  });
 });
