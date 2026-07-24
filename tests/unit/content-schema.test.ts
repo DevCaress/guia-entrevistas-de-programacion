@@ -1,3 +1,6 @@
+import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { readMdxFrontmatter } from "../../scripts/mdx-frontmatter.mjs";
 
@@ -11,5 +14,32 @@ describe("guide content frontmatter", () => {
       sidebar: { order: 10 }
     });
     expect(data.references.length).toBeGreaterThan(0);
+  });
+
+  it("parses frontmatter from an MDX file with CRLF line endings", async () => {
+    const directory = await mkdtemp(join(tmpdir(), "guia-mdx-crlf-"));
+    const file = join(directory, "crlf-fixture.mdx");
+    const source = [
+      "---",
+      "title: Compatibilidad CRLF",
+      "category: Pruebas",
+      "sidebar:",
+      "  order: 42",
+      "---",
+      "",
+      "# Contenido",
+      ""
+    ].join("\r\n");
+
+    try {
+      await writeFile(file, source, "utf8");
+      await expect(readMdxFrontmatter(file)).resolves.toMatchObject({
+        title: "Compatibilidad CRLF",
+        category: "Pruebas",
+        sidebar: { order: 42 }
+      });
+    } finally {
+      await rm(directory, { recursive: true, force: true });
+    }
   });
 });

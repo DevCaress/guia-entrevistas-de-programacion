@@ -16,7 +16,7 @@ export async function listMdxFiles(root) {
  */
 export async function readMdxFrontmatter(path) {
   const source = await readFile(path, "utf8");
-  const match = /^---\n([\s\S]*?)\n---/.exec(source);
+  const match = /^(?:\uFEFF)?---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/.exec(source);
   if (!match) return {};
   return parseYamlSubset(match[1]);
 }
