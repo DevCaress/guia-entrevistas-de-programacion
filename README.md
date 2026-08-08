@@ -1,21 +1,21 @@
 # Guía para entrevistas técnicas como Ingeniero de software
 
-## Sitio web navegable
+## Navigable website
 
-Esta guia ahora se publica como un sitio estatico de Astro. El README conserva el indice historico, mientras que el contenido navegable vive en `src/content/guide/**/*.mdx`.
+This guide is now published as an Astro static site. The README preserves the historical index, while the browsable content lives in `src/content/guide/**/*.mdx`.
 
-Visita la guia en [caress.dev/guia](https://caress.dev/guia).
+Visit the guide at [caress.dev/guia](https://caress.dev/guia).
 
-### Desarrollo local
+### Local development
 
-Usa Node.js `>=22.12.0`.
+Use Node.js `>=22.12.0`.
 
 ```bash
 npm install
 npm run dev
 ```
 
-### Validacion
+### Validation
 
 ```bash
 npm run build
@@ -25,11 +25,11 @@ npm run verify:content
 npm run check:links
 ```
 
-`npm run verify:content` compara secciones y referencias del README contra los archivos MDX migrados. `npm run check:links` valida sintaxis de URLs; para verificar disponibilidad externa con red, ejecuta `npm run check:links -- --fetch`.
+`npm run verify:content` compares the README sections and references against the migrated MDX files. `npm run check:links` validates URL syntax; to verify external availability over the network, run `npm run check:links -- --fetch`.
 
-### Agregar contenido
+### Add content
 
-Cada seccion nueva debe agregarse como `.mdx` en `src/content/guide/` con `title`, `description`, `category`, `sidebar.order` y `references`. Las referencias originales van en frontmatter y los ejemplos propios pueden agregarse con `examples` o como bloques de codigo MDX dentro del contenido.
+Each new section must be added as an `.mdx` file in `src/content/guide/` and include `title`, `description`, `category`, `sidebar.order` and `references`. Original references should be defined in the frontmatter, while custom examples can be added using `examples` or as MDX code blocks within the content.
 
 ## Contributing
 
