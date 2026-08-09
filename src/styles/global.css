@@ -70,6 +70,10 @@ select {
   max-width: 72ch;
 }
 
+.prose > * + * {
+  margin-top: 1rem;
+}
+
 .prose h1,
 .prose h2,
 .prose h3,
