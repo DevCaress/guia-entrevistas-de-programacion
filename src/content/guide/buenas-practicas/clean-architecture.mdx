@@ -1,12 +1,126 @@
 ---
 title: "Clean Architecture"
-description: "Conceptos base de arquitectura limpia para organizar responsabilidades."
+description: "Que es Clean Architecture, la regla de dependencia y como aplicarla con capas y puertos, con ejemplo antes/despues."
 category: "Buenas practicas"
 section: "Arquitectura"
 sidebar:
   label: "Clean Architecture"
   order: 40
-references: []
+references:
+  - label: "The Clean Architecture — Robert C. Martin (blog original)"
+    url: "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+  - label: "Clean Architecture: A Craftsman's Guide to Software Structure and Design"
+    url: "https://www.oreilly.com/library/view/clean-architecture-a/9780134494272/"
+  - label: "The Dependency Rule explained"
+    url: "https://khalilstemmler.com/wiki/dependency-rule/"
 ---
 
-Esta seccion reune recursos y criterios de estudio sobre Clean Architecture. Usa las referencias para profundizar y agrega ejemplos propios conforme avance la guia.
+**Clean Architecture** es una propuesta de Robert C. Martin (Uncle Bob) para organizar el codigo en capas concentricas, de forma que la logica de negocio quede aislada de detalles como el framework web, la base de datos o la UI. No es un framework ni una libreria: es un conjunto de reglas sobre **hacia donde pueden apuntar las dependencias**.
+
+---
+
+## Las capas
+
+De adentro hacia afuera:
+
+1. **Entities** — reglas de negocio globales de la aplicacion (objetos y logica que existirian aunque cambiaras de framework o de base de datos).
+2. **Use Cases** — reglas de negocio especificas de la aplicacion; orquestan las entities para cumplir un caso de uso concreto.
+3. **Interface Adapters** — controladores, presenters y gateways que traducen datos entre los use cases y el mundo exterior (HTTP, CLI, etc.).
+4. **Frameworks & Drivers** — la capa mas externa: framework web, ORM, driver de base de datos, UI. Aqui vive todo lo que es "detalle", no negocio.
+
+## La regla de dependencia
+
+> Las dependencias del codigo fuente solo pueden apuntar **hacia adentro**.
+
+Una capa interna nunca debe conocer nada de una capa externa. Las **Entities** no saben que existe una base de datos; los **Use Cases** no saben si los datos llegan por HTTP o por CLI. Cuando una capa interna necesita algo de afuera (por ejemplo, persistir datos), define una **interfaz (puerto)** en su propia capa, y la capa externa la implementa. Esto se apoya en el **Dependency Inversion Principle** (la "D" de SOLID).
+
+## Violacion de la regla
+
+```js
+// El caso de uso depende directamente de un detalle: el ORM y el framework HTTP
+const UserModel = require("../infra/orm/UserModel"); // Sequelize
+
+class RegisterUserUseCase {
+  async execute(req, res) {
+    // logica de negocio mezclada con validacion HTTP y con el ORM
+    if (!req.body.email.includes("@")) {
+      return res.status(400).json({ error: "email invalido" });
+    }
+
+    const user = await UserModel.create({ email: req.body.email });
+    return res.status(201).json(user);
+  }
+}
+```
+
+Este caso de uso no se puede probar sin levantar Express ni sin una base de datos real, y no se puede reutilizar si mañana el registro llega por un job en background en vez de HTTP.
+
+## Aplicando Clean Architecture
+
+```js
+// --- Entities: reglas de negocio puras, sin dependencias externas ---
+class User {
+  constructor(email) {
+    if (!email.includes("@")) {
+      throw new Error("email invalido");
+    }
+    this.email = email;
+  }
+}
+
+// --- Use Cases: define el puerto que necesita, no la implementacion ---
+// UserRepository es una interfaz (puerto) que vive en esta capa
+class RegisterUserUseCase {
+  constructor(userRepository) {
+    this.userRepository = userRepository; // depende de una abstraccion
+  }
+
+  async execute(email) {
+    const user = new User(email);
+    await this.userRepository.save(user);
+    return user;
+  }
+}
+
+// --- Interface Adapters: implementa el puerto y traduce HTTP <-> caso de uso ---
+class SequelizeUserRepository {
+  async save(user) {
+    await UserModel.create({ email: user.email });
+  }
+}
+
+class RegisterUserController {
+  constructor(registerUserUseCase) {
+    this.registerUserUseCase = registerUserUseCase;
+  }
+
+  async handle(req, res) {
+    try {
+      const user = await this.registerUserUseCase.execute(req.body.email);
+      return res.status(201).json(user);
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
+  }
+}
+
+// --- Frameworks & Drivers: composicion, el unico lugar que conoce Express y Sequelize ---
+const useCase = new RegisterUserUseCase(new SequelizeUserRepository());
+const controller = new RegisterUserController(useCase);
+app.post("/users", (req, res) => controller.handle(req, res));
+```
+
+Ahora `RegisterUserUseCase` se puede probar con un `UserRepository` falso en memoria, sin Express ni base de datos real, y `SequelizeUserRepository` se puede reemplazar por cualquier otra implementacion sin tocar la logica de negocio.
+
+## Errores comunes
+
+- **"Capas" que son solo carpetas**: crear carpetas `entities/`, `usecases/`, `adapters/` no basta si el codigo de adentro sigue importando cosas de afuera (por ejemplo, un use case que importa directamente el modelo de Sequelize).
+- **Sobre-ingenieria en proyectos pequeños**: para un script o un CRUD trivial, el costo de las capas e interfaces puede superar el beneficio. Clean Architecture rinde cuando la logica de negocio es compleja o el proyecto va a vivir mucho tiempo.
+- **Confundir Clean Architecture con "usar controladores y servicios"**: tener un `UserService` no es Clean Architecture si ese servicio sigue dependiendo directamente de Express o del ORM.
+
+## Resumen
+
+- La regla central es una sola: **las dependencias apuntan hacia adentro**, nunca hacia afuera.
+- Las capas internas (Entities, Use Cases) definen **puertos**; las capas externas los implementan.
+- El beneficio principal es poder **probar la logica de negocio sin infraestructura real** y poder **cambiar frameworks o bases de datos** sin reescribir el negocio.
+- No es gratis: aplica el nivel de capas segun la complejidad y vida esperada del proyecto.
